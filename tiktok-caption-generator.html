@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TikTok Caption Generator - SpeedTools</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.result {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+.copy {
+    background: #16a34a;
+    margin-top: 15px;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #111827;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚡ SpeedTools</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>✍️ TikTok Caption Generator</h2>
+
+<p class="description">
+Create TikTok captions for your videos in seconds.
+</p>
+
+<input
+type="text"
+id="topic"
+placeholder="Example: Gym workout"
+>
+
+<select id="style">
+<option value="viral">Viral & Catchy</option>
+<option value="funny">Funny</option>
+<option value="motivational">Motivational</option>
+<option value="simple">Simple</option>
+</select>
+
+<button onclick="generateCaption()">
+Generate Caption
+</button>
+
+<div class="result" id="result"></div>
+
+<button
+class="copy"
+id="copyButton"
+onclick="copyCaption()"
+style="display:none;">
+📋 Copy Caption
+</button>
+
+<a class="back" href="index.html">
+← Back to SpeedTools
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+function generateCaption() {
+
+let topic =
+document.getElementById("topic").value.trim();
+
+let style =
+document.getElementById("style").value;
+
+if (topic === "") {
+alert("Please enter a topic.");
+return;
+}
+
+let captions = {
+
+viral: [
+"Wait until you see this 👀🔥 #" + topic.replace(/\s+/g,""),
+"This changed everything! 🚀🔥",
+"POV: You finally discovered this 😳",
+"You need to see this before everyone else does 👀",
+"Can you believe this? 🤯🔥"
+],
+
+funny: [
+"Well... that escalated quickly 😂",
+"I definitely planned that 😅",
+"Nobody warned me about this 😂",
+"Me pretending everything is under control 🤣",
+"Why did I actually do this? 😂"
+],
+
+motivational: [
+"Keep going. Your future self will thank you 💪",
+"Small steps every day. 🔥",
+"Don't stop until you're proud.",
+"Your only limit is the one you set.",
+"Progress takes time. Keep moving forward 🚀"
+],
+
+simple: [
+"Just sharing this with you ✨",
+"Hope you enjoy this one ❤️",
+"Here's today's video!",
+"Let me know what you think 👇",
+"More coming soon 🔥"
+]
+
+};
+
+let list = captions[style];
+
+let caption =
+list[Math.floor(Math.random() * list.length)];
+
+caption +=
+"\n\n#" +
+topic.replace(/\s+/g,"") +
+" #fyp #foryou #viral #tiktok";
+
+document.getElementById("result").innerText =
+caption;
+
+document.getElementById("result").style.display =
+"block";
+
+document.getElementById("copyButton").style.display =
+"block";
+
+}
+
+function copyCaption() {
+
+let text =
+document.getElementById("result").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Caption copied!");
+
+}
+
+</script>
+
+</body>
+  </html>
