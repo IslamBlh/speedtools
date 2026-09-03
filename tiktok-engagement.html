@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Engagement Calculator - SpeedTools</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.result {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #eef2ff;
+    text-align: center;
+}
+
+.result h3 {
+    margin-top: 0;
+}
+
+.rate {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #111827;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚡ SpeedTools</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>TikTok Engagement Calculator</h2>
+
+        <p class="description">
+            Calculate your TikTok engagement rate for free.
+        </p>
+
+        <label>Views</label>
+        <input type="number" id="views" placeholder="Example: 10000">
+
+        <label>Likes</label>
+        <input type="number" id="likes" placeholder="Example: 800">
+
+        <label>Comments</label>
+        <input type="number" id="comments" placeholder="Example: 50">
+
+        <label>Shares</label>
+        <input type="number" id="shares" placeholder="Example: 30">
+
+        <button onclick="calculateEngagement()">
+            Calculate Engagement
+        </button>
+
+        <div class="result" id="result">
+
+            <h3>Your Engagement Rate</h3>
+
+            <div class="rate" id="rate">
+                0%
+            </div>
+
+            <p id="details"></p>
+
+        </div>
+
+        <a class="back" href="index.html">
+            ← Back to SpeedTools
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+function calculateEngagement() {
+
+    let views = Number(document.getElementById("views").value);
+    let likes = Number(document.getElementById("likes").value);
+    let comments = Number(document.getElementById("comments").value);
+    let shares = Number(document.getElementById("shares").value);
+
+    if (views <= 0) {
+        alert("Please enter a valid number of views.");
+        return;
+    }
+
+    let totalInteractions = likes + comments + shares;
+
+    let engagementRate =
+        (totalInteractions / views) * 100;
+
+    document.getElementById("rate").innerText =
+        engagementRate.toFixed(2) + "%";
+
+    document.getElementById("details").innerText =
+        totalInteractions.toLocaleString() +
+        " total interactions from " +
+        views.toLocaleString() +
+        " views.";
+
+    document.getElementById("result").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
