@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TikTok Hashtag Generator - SpeedTools</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.hashtags {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    line-height: 2;
+    font-size: 17px;
+}
+
+.copy {
+    background: #16a34a;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #111827;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚡ SpeedTools</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>🎯 TikTok Hashtag Generator</h2>
+
+        <p class="description">
+            Enter your topic and generate TikTok hashtags instantly.
+        </p>
+
+        <input
+            type="text"
+            id="topic"
+            placeholder="Example: fitness"
+        >
+
+        <button onclick="generateHashtags()">
+            Generate Hashtags
+        </button>
+
+        <div class="hashtags" id="hashtags"></div>
+
+        <button
+            class="copy"
+            id="copyButton"
+            onclick="copyHashtags()"
+            style="display:none;"
+        >
+            📋 Copy Hashtags
+        </button>
+
+        <a class="back" href="index.html">
+            ← Back to SpeedTools
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+function generateHashtags() {
+
+    let topic = document.getElementById("topic").value.trim();
+
+    if (topic === "") {
+        alert("Please enter a topic.");
+        return;
+    }
+
+    topic = topic
+        .replace(/\s+/g, "")
+        .replace(/#/g, "");
+
+    let hashtags =
+        "#" + topic +
+        " #" + topic + "tips" +
+        " #" + topic + "tok" +
+        " #" + topic + "viral" +
+        " #" + topic + "trend" +
+        " #" + topic + "community" +
+        " #fyp" +
+        " #foryou" +
+        " #foryoupage" +
+        " #viral" +
+        " #trending" +
+        " #tiktok" +
+        " #tiktoktips" +
+        " #tiktokcreator" +
+        " #tiktokviral";
+
+    document.getElementById("hashtags").innerText = hashtags;
+
+    document.getElementById("hashtags").style.display = "block";
+
+    document.getElementById("copyButton").style.display = "block";
+}
+
+function copyHashtags() {
+
+    let text =
+        document.getElementById("hashtags").innerText;
+
+    navigator.clipboard.writeText(text);
+
+    alert("Hashtags copied!");
+}
+
+</script>
+
+</body>
+</html>
