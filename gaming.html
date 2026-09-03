@@ -6,8 +6,7 @@
 
 <title>Gaming & Rewards - SpeedTools</title>
 
-<meta name="description"
-content="Discover games, apps, surveys and reward opportunities on SpeedTools.">
+<meta name="description" content="Discover games, apps and selected reward opportunities on SpeedTools.">
 
 <style>
 
@@ -19,17 +18,17 @@ content="Discover games, apps, surveys and reward opportunities on SpeedTools.">
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f6f8fc;
+    background:#f5f7fb;
     color:#172033;
     line-height:1.6;
 }
 
 header{
-    background:#ffffff;
-    border-bottom:1px solid #e8ebf2;
     position:sticky;
     top:0;
     z-index:100;
+    background:white;
+    border-bottom:1px solid #e8ebf2;
 }
 
 .nav{
@@ -54,29 +53,31 @@ header{
 
 .back{
     text-decoration:none;
-    color:#4b5563;
-    font-weight:600;
+    color:#667085;
+    font-weight:700;
 }
 
+/* HERO */
+
 .hero{
-    background:linear-gradient(135deg,#eef2ff,#f8fafc);
-    padding:70px 20px;
+    padding:75px 20px;
     text-align:center;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
 }
 
 .badge{
     display:inline-block;
-    background:#e0e7ff;
-    color:#4f46e5;
     padding:7px 14px;
     border-radius:30px;
+    background:#e0e7ff;
+    color:#4f46e5;
     font-size:12px;
     font-weight:800;
     margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:clamp(38px,6vw,58px);
+    font-size:clamp(38px,6vw,60px);
     line-height:1.1;
     margin-bottom:18px;
 }
@@ -86,231 +87,302 @@ header{
 }
 
 .hero p{
-    max-width:680px;
+    max-width:700px;
     margin:auto;
     color:#667085;
     font-size:18px;
 }
 
+/* NAVIGATION */
+
+.category-nav{
+    max-width:1000px;
+    margin:-28px auto 0;
+    position:relative;
+    padding:0 20px;
+}
+
+.category-box{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:12px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.category-box a{
+    text-decoration:none;
+    color:#344054;
+    padding:15px;
+    text-align:center;
+    border-radius:12px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.category-box a:hover{
+    background:#eef2ff;
+    color:#4f46e5;
+}
+
+/* MAIN */
+
 .container{
     max-width:1150px;
     margin:auto;
-    padding:50px 20px;
+    padding:60px 20px;
 }
 
-/* FEATURED */
+/* GENERAL SECTION */
 
-.featured{
-    background:#111827;
-    color:white;
-    border-radius:24px;
-    padding:35px;
-    margin-bottom:45px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
+.section{
+    margin-bottom:70px;
+    scroll-margin-top:100px;
 }
 
-.featured-text{
-    max-width:700px;
+.section-header{
+    margin-bottom:25px;
 }
 
-.featured small{
-    color:#a5b4fc;
+.section-header small{
+    font-size:12px;
     font-weight:800;
-    text-transform:uppercase;
     letter-spacing:1px;
 }
 
-.featured h2{
-    font-size:30px;
-    margin:8px 0 10px;
+.section-header h2{
+    font-size:34px;
+    margin:5px 0;
 }
 
-.featured p{
-    color:#cbd5e1;
+.section-header p{
+    color:#667085;
 }
 
-.featured-button{
-    display:inline-block;
-    white-space:nowrap;
+/* GAMES */
+
+.games-section{
+    background:#111827;
+    border-radius:25px;
+    padding:35px;
+    color:white;
+}
+
+.games-section .section-header p{
+    color:#aab4c5;
+}
+
+.games-section .section-header small{
+    color:#a5b4fc;
+}
+
+.games-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.game-card{
+    background:#1d2636;
+    border:1px solid #303b4d;
+    border-radius:18px;
+    padding:22px;
+    transition:.2s;
+}
+
+.game-card:hover{
+    transform:translateY(-4px);
+}
+
+.game-icon{
+    font-size:38px;
+    margin-bottom:14px;
+}
+
+.game-card h3{
+    margin-bottom:7px;
+}
+
+.game-card p{
+    color:#b8c1cf;
+    font-size:14px;
+}
+
+.game-button{
+    display:block;
+    margin-top:18px;
+    text-align:center;
+    text-decoration:none;
     background:#6366f1;
     color:white;
-    text-decoration:none;
-    padding:13px 22px;
+    padding:11px;
     border-radius:10px;
     font-weight:800;
 }
 
-/* FILTERS */
+/* APPS */
 
-.filters{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-bottom:30px;
+.apps-section{
+    background:#eef6ff;
+    border:1px solid #dbeafe;
+    border-radius:25px;
+    padding:35px;
 }
 
-.filter{
-    border:1px solid #dfe3eb;
-    background:white;
-    color:#4b5563;
-    padding:10px 18px;
-    border-radius:30px;
-    cursor:pointer;
-    font-weight:700;
+.apps-section .section-header small{
+    color:#2563eb;
 }
 
-.filter.active,
-.filter:hover{
-    background:#6366f1;
-    color:white;
-    border-color:#6366f1;
-}
-
-/* CARDS */
-
-.grid{
+.apps-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
-.card{
+.app-card{
     background:white;
-    border:1px solid #e8ebf2;
+    border:1px solid #dbeafe;
     border-radius:18px;
-    padding:25px;
+    padding:24px;
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
     transition:.2s;
 }
 
-.card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 14px 35px rgba(31,41,55,.09);
+.app-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(37,99,235,.08);
 }
 
-.card-icon{
+.app-icon{
     width:55px;
     height:55px;
+    min-width:55px;
+    background:#eff6ff;
     border-radius:15px;
-    background:#eef2ff;
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:27px;
-    margin-bottom:18px;
 }
 
-.category{
-    color:#6366f1;
+.app-card h3{
+    margin-bottom:6px;
+}
+
+.app-card p{
+    color:#667085;
+    font-size:14px;
+}
+
+.app-status{
+    display:inline-block;
+    margin-top:10px;
     font-size:11px;
     font-weight:800;
+    color:#2563eb;
     text-transform:uppercase;
-    letter-spacing:.7px;
 }
 
-.card h3{
-    font-size:21px;
-    margin:7px 0 8px;
+/* OFFERS */
+
+.offers-section{
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    border-radius:25px;
+    padding:35px;
 }
 
-.card p{
-    color:#667085;
-    font-size:14px;
-    min-height:65px;
+.offers-section .section-header small{
+    color:#ea580c;
 }
 
-.card-footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:20px;
-    padding-top:17px;
-    border-top:1px solid #eef0f4;
-}
-
-.status{
-    font-size:12px;
-    font-weight:700;
-    color:#98a2b3;
-}
-
-.explore{
-    text-decoration:none;
-    color:#6366f1;
-    font-size:14px;
-    font-weight:800;
-}
-
-.card.hidden{
-    display:none;
-}
-
-/* HOW IT WORKS */
-
-.how{
-    margin-top:60px;
-}
-
-.how-title{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.how-title h2{
-    font-size:32px;
-    margin-bottom:8px;
-}
-
-.how-title p{
-    color:#667085;
-}
-
-.steps{
+.offers-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:18px;
 }
 
-.step{
+.offer-card{
     background:white;
-    border:1px solid #e8ebf2;
+    border:1px solid #fed7aa;
     border-radius:18px;
-    padding:25px;
+    padding:24px;
+    position:relative;
+    transition:.2s;
 }
 
-.step-number{
-    width:40px;
-    height:40px;
-    border-radius:12px;
-    background:#eef2ff;
-    color:#6366f1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.offer-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(234,88,12,.08);
+}
+
+.offer-icon{
+    font-size:34px;
+    margin-bottom:14px;
+}
+
+.offer-label{
+    display:inline-block;
+    background:#ffedd5;
+    color:#c2410c;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
     font-weight:800;
-    margin-bottom:15px;
+    text-transform:uppercase;
+    margin-bottom:9px;
 }
 
-.step h3{
+.offer-card h3{
     margin-bottom:7px;
 }
 
-.step p{
+.offer-card p{
     color:#667085;
     font-size:14px;
 }
 
-/* NOTICE */
+.offer-button{
+    display:block;
+    margin-top:18px;
+    text-align:center;
+    text-decoration:none;
+    border:1px solid #ea580c;
+    color:#c2410c;
+    padding:10px;
+    border-radius:10px;
+    font-weight:800;
+}
+
+/* INFO */
+
+.info{
+    margin-top:20px;
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    padding:30px;
+}
+
+.info h2{
+    margin-bottom:8px;
+}
+
+.info p{
+    color:#667085;
+    font-size:14px;
+}
 
 .notice{
-    margin-top:25px;
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    padding:18px;
+    margin-top:18px;
+    padding:15px;
+    background:#f8fafc;
+    border-radius:12px;
     color:#667085;
     font-size:13px;
 }
@@ -318,49 +390,47 @@ header{
 /* FOOTER */
 
 footer{
-    margin-top:60px;
+    border-top:1px solid #e8ebf2;
     padding:35px 20px;
     text-align:center;
     color:#8a94a6;
     font-size:13px;
-    border-top:1px solid #e8ebf2;
 }
 
 /* MOBILE */
 
 @media(max-width:800px){
 
-    .grid{
+    .games-grid,
+    .offers-grid{
         grid-template-columns:1fr 1fr;
     }
 
-    .steps{
+    .apps-grid{
         grid-template-columns:1fr;
-    }
-
-    .featured{
-        flex-direction:column;
-        align-items:flex-start;
     }
 
 }
 
 @media(max-width:550px){
 
-    .grid{
+    .category-box{
         grid-template-columns:1fr;
+    }
+
+    .games-grid,
+    .offers-grid{
+        grid-template-columns:1fr;
+    }
+
+    .games-section,
+    .apps-section,
+    .offers-section{
+        padding:24px 18px;
     }
 
     .hero{
         padding:55px 20px;
-    }
-
-    .featured{
-        padding:28px 22px;
-    }
-
-    .featured h2{
-        font-size:25px;
     }
 
 }
@@ -388,6 +458,8 @@ footer{
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="badge">
@@ -395,380 +467,379 @@ GAMING & REWARDS
 </div>
 
 <h1>
-Play. Explore. <span>Discover.</span>
+Explore <span>More.</span>
 </h1>
 
 <p>
-Explore games, mobile apps, surveys and selected reward
-opportunities — all in one simple place.
+Discover games, mobile apps and selected opportunities
+in one simple SpeedTools hub.
 </p>
 
 </section>
+
+
+<!-- CATEGORY NAVIGATION -->
+
+<div class="category-nav">
+
+<div class="category-box">
+
+<a href="#games">
+🎮 Free Games
+</a>
+
+<a href="#apps">
+📱 App Rewards
+</a>
+
+<a href="#offers">
+🎁 Game Offers
+</a>
+
+</div>
+
+</div>
 
 
 <main class="container">
 
 
-<!-- FEATURED -->
+<!-- GAMES -->
 
-<section class="featured">
+<section class="section games-section" id="games">
 
-<div class="featured-text">
+<div class="section-header">
 
-<small>Coming to SpeedTools</small>
+<small>🎮 GAMING</small>
 
-<h2>🪙 Rewards Center</h2>
+<h2>Free Games</h2>
 
 <p>
-A dedicated rewards area is being prepared for selected
-partner offers, games, apps and other opportunities.
+Discover casual and mobile gaming opportunities.
 </p>
 
 </div>
 
-<a href="#offers" class="featured-button">
-Explore Opportunities
+
+<div class="games-grid">
+
+
+<div class="game-card">
+
+<div class="game-icon">
+🧩
+</div>
+
+<h3>
+Puzzle Games
+</h3>
+
+<p>
+Explore relaxing puzzle and brain games.
+</p>
+
+<a href="#" class="game-button">
+Explore Game
 </a>
+
+</div>
+
+
+<div class="game-card">
+
+<div class="game-icon">
+🏎️
+</div>
+
+<h3>
+Racing Games
+</h3>
+
+<p>
+Discover fast-paced racing experiences.
+</p>
+
+<a href="#" class="game-button">
+Explore Game
+</a>
+
+</div>
+
+
+<div class="game-card">
+
+<div class="game-icon">
+⚔️
+</div>
+
+<h3>
+Action Games
+</h3>
+
+<p>
+Find interesting action and adventure games.
+</p>
+
+<a href="#" class="game-button">
+Explore Game
+</a>
+
+</div>
+
+
+</div>
 
 </section>
 
 
-<!-- FILTERS -->
+<!-- APPS -->
 
-<div class="filters">
+<section class="section apps-section" id="apps">
 
-<button class="filter active"
-onclick="filterCards('all',this)">
-All
-</button>
+<div class="section-header">
 
-<button class="filter"
-onclick="filterCards('game',this)">
-🎮 Games
-</button>
+<small>📱 MOBILE APPS</small>
 
-<button class="filter"
-onclick="filterCards('app',this)">
-📱 Apps
-</button>
+<h2>App Rewards</h2>
 
-<button class="filter"
-onclick="filterCards('survey',this)">
-📝 Surveys
-</button>
+<p>
+Discover applications and future partner opportunities.
+</p>
 
 </div>
 
 
-<!-- OPPORTUNITIES -->
-
-<div class="grid" id="offers">
+<div class="apps-grid">
 
 
-<div class="card"
-data-type="game"
-id="games">
+<div class="app-card">
 
-<div class="card-icon">
-🎮
+<div class="app-icon">
+📲
 </div>
 
-<div class="category">
-Games
-</div>
+<div>
 
 <h3>
-Free Games
+Discover New Apps
 </h3>
 
 <p>
-Discover interesting games and gaming opportunities
-selected for SpeedTools visitors.
+Explore useful and entertaining mobile applications.
 </p>
 
-<div class="card-footer">
-
-<span class="status">
-Preparing
+<span class="app-status">
+Coming Soon
 </span>
 
-<a href="#"
-class="explore">
-View →
-</a>
-
 </div>
 
 </div>
 
 
-<div class="card"
-data-type="app"
-id="apps">
+<div class="app-card">
 
-<div class="card-icon">
-📱
-</div>
-
-<div class="category">
-Apps
-</div>
-
-<h3>
-App Rewards
-</h3>
-
-<p>
-Explore mobile applications and future partner
-opportunities available to eligible users.
-</p>
-
-<div class="card-footer">
-
-<span class="status">
-Preparing
-</span>
-
-<a href="#"
-class="explore">
-View →
-</a>
-
-</div>
-
-</div>
-
-
-<div class="card"
-data-type="game">
-
-<div class="card-icon">
-🎁
-</div>
-
-<div class="category">
-Offers
-</div>
-
-<h3>
-Game Offers
-</h3>
-
-<p>
-Discover selected gaming opportunities from
-approved partners when available.
-</p>
-
-<div class="card-footer">
-
-<span class="status">
-Preparing
-</span>
-
-<a href="#"
-class="explore">
-View →
-</a>
-
-</div>
-
-</div>
-
-
-<div class="card"
-data-type="survey">
-
-<div class="card-icon">
-📝
-</div>
-
-<div class="category">
-Surveys
-</div>
-
-<h3>
-Quick Surveys
-</h3>
-
-<p>
-Participate in available research and survey
-opportunities when they become available.
-</p>
-
-<div class="card-footer">
-
-<span class="status">
-Preparing
-</span>
-
-<a href="#"
-class="explore">
-View →
-</a>
-
-</div>
-
-</div>
-
-
-<div class="card"
-data-type="app">
-
-<div class="card-icon">
+<div class="app-icon">
 🚀
 </div>
 
-<div class="category">
-Apps
-</div>
+<div>
 
 <h3>
-New App Offers
+Featured Apps
 </h3>
 
 <p>
-Explore new applications and promotional
-opportunities selected for SpeedTools.
+Discover selected applications from future partners.
 </p>
 
-<div class="card-footer">
-
-<span class="status">
-Preparing
+<span class="app-status">
+Coming Soon
 </span>
 
-<a href="#"
-class="explore">
-View →
+</div>
+
+</div>
+
+
+<div class="app-card">
+
+<div class="app-icon">
+🎯
+</div>
+
+<div>
+
+<h3>
+App Challenges
+</h3>
+
+<p>
+Future opportunities may include completing
+specific app activities.
+</p>
+
+<span class="app-status">
+Coming Soon
+</span>
+
+</div>
+
+</div>
+
+
+<div class="app-card">
+
+<div class="app-icon">
+⭐
+</div>
+
+<div>
+
+<h3>
+Recommended Apps
+</h3>
+
+<p>
+A curated collection of interesting mobile apps.
+</p>
+
+<span class="app-status">
+Coming Soon
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- OFFERS -->
+
+<section class="section offers-section" id="offers">
+
+<div class="section-header">
+
+<small>🎁 OPPORTUNITIES</small>
+
+<h2>Game Offers</h2>
+
+<p>
+Selected gaming opportunities and partner offers.
+</p>
+
+</div>
+
+
+<div class="offers-grid">
+
+
+<div class="offer-card">
+
+<div class="offer-icon">
+🎮
+</div>
+
+<span class="offer-label">
+Gaming
+</span>
+
+<h3>
+Play & Explore
+</h3>
+
+<p>
+Discover future gaming offers and promotional
+opportunities.
+</p>
+
+<a href="#" class="offer-button">
+View Offer
 </a>
 
 </div>
 
-</div>
 
+<div class="offer-card">
 
-<div class="card"
-data-type="game">
-
-<div class="card-icon">
+<div class="offer-icon">
 🏆
 </div>
 
-<div class="category">
-Gaming
-</div>
+<span class="offer-label">
+Challenges
+</span>
 
 <h3>
-Featured Games
+Complete Challenges
 </h3>
 
 <p>
-A future collection of featured gaming
-opportunities from approved partners.
+Some future partner offers may include
+specific gameplay objectives.
 </p>
 
-<div class="card-footer">
-
-<span class="status">
-Preparing
-</span>
-
-<a href="#"
-class="explore">
-View →
+<a href="#" class="offer-button">
+View Offer
 </a>
 
 </div>
 
+
+<div class="offer-card">
+
+<div class="offer-icon">
+🎁
+</div>
+
+<span class="offer-label">
+Rewards
+</span>
+
+<h3>
+Featured Opportunities
+</h3>
+
+<p>
+A dedicated area for selected reward opportunities
+will be added here.
+</p>
+
+<a href="#" class="offer-button">
+View Offer
+</a>
+
 </div>
 
 
 </div>
+
+</section>
 
 
 <!-- HOW IT WORKS -->
 
-<section class="how">
-
-<div class="how-title">
+<section class="info">
 
 <h2>
-How it works
+How SpeedTools Rewards Work
 </h2>
 
 <p>
-A simple experience for discovering available opportunities.
+When partner opportunities become available, each offer
+will clearly explain what is required before you participate.
 </p>
-
-</div>
-
-
-<div class="steps">
-
-
-<div class="step">
-
-<div class="step-number">
-01
-</div>
-
-<h3>
-Choose
-</h3>
-
-<p>
-Browse games, apps, surveys and other opportunities
-that match your interests.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-02
-</div>
-
-<h3>
-Participate
-</h3>
-
-<p>
-Open an available opportunity and follow the requirements
-shown by the partner.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-03
-</div>
-
-<h3>
-Complete
-</h3>
-
-<p>
-If the opportunity includes a reward, eligibility and
-completion are determined by its specific terms.
-</p>
-
-</div>
-
-
-</div>
-
 
 <div class="notice">
 
 <strong>Important:</strong>
-Availability, eligibility and rewards can vary by country,
-device and partner. SpeedTools does not guarantee a specific
-reward or income.
+Availability, eligibility and rewards may vary depending
+on your country, device and the individual partner.
+SpeedTools does not guarantee a specific reward or income.
 
 </div>
 
@@ -783,39 +854,6 @@ reward or income.
 © 2026 SpeedTools. All rights reserved.
 
 </footer>
-
-
-<script>
-
-function filterCards(type, button){
-
-    document.querySelectorAll('.filter').forEach(function(btn){
-
-        btn.classList.remove('active');
-
-    });
-
-    button.classList.add('active');
-
-
-    document.querySelectorAll('.card').forEach(function(card){
-
-        if(type === 'all' || card.dataset.type === type){
-
-            card.classList.remove('hidden');
-
-        }else{
-
-            card.classList.add('hidden');
-
-        }
-
-    });
-
-}
-
-</script>
-
 
 </body>
 </html>
