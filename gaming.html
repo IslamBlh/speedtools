@@ -1,1800 +1,1406 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Gaming & Rewards - SpeedTools</title>
-
-<meta name="description"
-content="Browse 100 Android games with game cards, categories, search and download buttons.">
-
-<style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f7fb;
-    color:#172033;
-    line-height:1.5;
-}
-
-/* HEADER */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:#ffffff;
-    border-bottom:1px solid #e5e7eb;
-}
-
-.nav{
-    max-width:1200px;
-    margin:auto;
-    padding:16px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    text-decoration:none;
-    color:#111827;
-    font-size:24px;
-    font-weight:900;
-}
-
-.logo span{
-    color:#6366f1;
-}
-
-.back{
-    text-decoration:none;
-    color:#667085;
-    font-weight:700;
-}
-
-/* HERO */
-
-.hero{
-    text-align:center;
-    padding:70px 20px 85px;
-    background:linear-gradient(135deg,#eef2ff,#f8fafc);
-}
-
-.badge{
-    display:inline-block;
-    background:#e0e7ff;
-    color:#4f46e5;
-    padding:7px 14px;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:900;
-    margin-bottom:16px;
-}
-
-.hero h1{
-    font-size:clamp(42px,8vw,70px);
-    line-height:1;
-    margin-bottom:18px;
-}
-
-.hero h1 span{
-    color:#6366f1;
-}
-
-.hero p{
-    max-width:700px;
-    margin:auto;
-    color:#667085;
-    font-size:18px;
-}
-
-/* CONTAINER */
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:45px 20px 70px;
-}
-
-/* FILTER */
-
-.toolbar{
-    position:sticky;
-    top:72px;
-    z-index:50;
-
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:18px;
-
-    padding:14px;
-
-    display:grid;
-    grid-template-columns:1fr 200px 150px;
-
-    gap:10px;
-
-    margin-bottom:25px;
-
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
-}
-
-.toolbar input,
-.toolbar select{
-    width:100%;
-    padding:13px;
-
-    border:1px solid #d9dee8;
-    border-radius:11px;
-
-    background:#fff;
-
-    font-size:14px;
-
-    outline:none;
-}
-
-.toolbar input:focus,
-.toolbar select:focus{
-    border-color:#6366f1;
-}
-
-/* COUNT */
-
-.count{
-    color:#667085;
-    font-size:13px;
-    margin-bottom:15px;
-}
-
-/* GRID */
-
-.games-grid{
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:18px;
-}
-
-/* CARD */
-
-.game-card{
-    background:#fff;
-
-    border:1px solid #e4e8ef;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 5px 18px rgba(20,30,50,.05);
-
-    transition:.2s;
-
-    display:flex;
-    flex-direction:column;
-}
-
-.game-card:hover{
-    transform:translateY(-5px);
-
-    box-shadow:
-    0 14px 30px rgba(20,30,50,.12);
-}
-
-.game-card.hidden{
-    display:none;
-}
-
-/* GAME IMAGE */
-
-.cover{
-    height:185px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    color:white;
-
-    background:
-    linear-gradient(
-        135deg,
-        #111827,
-        #6366f1
-    );
-}
-
-.cover-bg{
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(
-        circle at 20% 20%,
-        rgba(255,255,255,.30),
-        transparent 28%
-    ),
-
-    radial-gradient(
-        circle at 85% 75%,
-        rgba(255,255,255,.20),
-        transparent 32%
-    );
-}
-
-.cover-number{
-    position:absolute;
-
-    top:10px;
-    left:11px;
-
-    font-size:10px;
-
-    font-weight:900;
-
-    opacity:.7;
-}
-
-.cover-emoji{
-    font-size:60px;
-
-    z-index:2;
-
-    filter:
-    drop-shadow(
-        0 8px 10px rgba(0,0,0,.3)
-    );
-
-    margin-top:-12px;
-}
-
-.cover-title{
-    position:absolute;
-
-    left:12px;
-    right:12px;
-    bottom:11px;
-
-    font-size:14px;
-
-    font-weight:900;
-
-    line-height:1.2;
-
-    text-shadow:
-    0 2px 8px rgba(0,0,0,.7);
-
-    z-index:3;
-}
-
-/* CARD BODY */
-
-.game-body{
-    padding:15px;
-
-    display:flex;
-    flex-direction:column;
-
-    flex:1;
-}
-
-.game-line{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:8px;
-
-    margin-bottom:7px;
-}
-
-.genre{
-    font-size:10px;
-
-    color:#6366f1;
-
-    font-weight:900;
-
-    text-transform:uppercase;
-}
-
-.status{
-    font-size:9px;
-
-    font-weight:900;
-
-    padding:4px 7px;
-
-    border-radius:20px;
-}
-
-.status.free{
-    background:#dcfce7;
-    color:#15803d;
-}
-
-.status.paid{
-    background:#fef3c7;
-    color:#b45309;
-}
-
-.game-body h3{
-    font-size:17px;
-
-    line-height:1.25;
-
-    margin-bottom:7px;
-}
-
-.game-body p{
-    font-size:12px;
-
-    color:#667085;
-
-    min-height:56px;
-}
-
-.meta{
-    display:flex;
-
-    justify-content:space-between;
-
-    margin:12px 0;
-
-    color:#98a2b3;
-
-    font-size:10px;
-}
-
-.meta b{
-    color:#475467;
-}
-
-/* BUTTON */
-
-.download{
-    display:block;
-
-    text-align:center;
-
-    text-decoration:none;
-
-    background:#6366f1;
-
-    color:#fff;
-
-    border-radius:10px;
-
-    padding:11px;
-
-    font-size:12px;
-
-    font-weight:900;
-
-    margin-top:auto;
-
-    transition:.2s;
-}
-
-.download:hover{
-    background:#4f46e5;
-}
-
-/* NOTE */
-
-.note{
-    margin-top:30px;
-
-    padding:18px;
-
-    background:#fff;
-
-    border:1px solid #e5e7eb;
-
-    border-radius:16px;
-
-    color:#667085;
-
-    font-size:13px;
-}
-
-/* FOOTER */
-
-footer{
-    border-top:1px solid #e6eaf0;
-
-    padding:30px 20px;
-
-    text-align:center;
-
-    color:#8a94a6;
-
-    font-size:12px;
-
-}
-
-/* TABLET */
-
-@media(max-width:1000px){
-
-    .games-grid{
-        grid-template-columns:
-        repeat(3,1fr);
-    }
-
-}
-
-/* MOBILE */
-
-@media(max-width:760px){
-
-    .games-grid{
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .toolbar{
-        grid-template-columns:
-        1fr 1fr;
-    }
-
-    .toolbar input{
-        grid-column:1/-1;
-    }
-
-}
-
-/* SMALL MOBILE */
-
-@media(max-width:520px){
-
-    .games-grid{
-        grid-template-columns:1fr;
-    }
-
-    .toolbar{
-        grid-template-columns:1fr;
-    }
-
-    .toolbar input{
-        grid-column:auto;
-    }
-
-    .hero{
-        padding:50px 20px 65px;
-    }
-
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- HEADER -->
-
-<header>
-
-<div class="nav">
-
-<a class="logo" href="index.html">
-⚡ Speed<span>Tools</span>
-</a>
-
-<a class="back" href="index.html">
-← Back to Home
-</a>
-
-</div>
-
-</header>
-
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="badge">
-🎮 GAMING HUB
-</div>
-
-<h1>
-100 <span>Games.</span>
-</h1>
-
-<p>
-Browse 100 Android games with visual game cards,
-categories, search and external download buttons.
-</p>
+<!-- =========================
+     SPEEDTOOLS - 100 GAMES
+     Real game artwork loader
+========================= -->
+
+<section class="games-section" id="games">
+
+  <div class="games-header">
+    <div>
+      <span class="section-badge">🎮 GAMING</span>
+      <h2>100 Mobile Games</h2>
+      <p>Discover popular mobile games and download them from external sources.</p>
+    </div>
+
+    <div class="games-count">
+      <strong id="gamesCount">100</strong>
+      <span>Games</span>
+    </div>
+  </div>
+
+  <div class="games-controls">
+
+    <input
+      type="text"
+      id="gameSearch"
+      placeholder="🔍 Search games..."
+    >
+
+    <select id="genreFilter">
+      <option value="all">All Genres</option>
+      <option value="Action">Action</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Arcade">Arcade</option>
+      <option value="Racing">Racing</option>
+      <option value="Sports">Sports</option>
+      <option value="Strategy">Strategy</option>
+      <option value="RPG">RPG</option>
+      <option value="Simulation">Simulation</option>
+      <option value="Casual">Casual</option>
+      <option value="Puzzle">Puzzle</option>
+      <option value="Online">Online</option>
+    </select>
+
+    <select id="priceFilter">
+      <option value="all">All Games</option>
+      <option value="free">Free</option>
+      <option value="paid">Paid</option>
+    </select>
+
+  </div>
+
+  <div id="gamesGrid" class="games-grid"></div>
 
 </section>
 
 
-
-<!-- MAIN -->
-
-<main class="container">
-
-
-<!-- SEARCH -->
-
-<div class="toolbar">
-
-<input
-id="search"
-type="search"
-placeholder="🔎 Search games..."
-aria-label="Search games"
->
-
-<select id="genre">
-
-<option value="all">
-All genres
-</option>
-
-<option value="action">
-Action
-</option>
-
-<option value="adventure">
-Adventure
-</option>
-
-<option value="arcade">
-Arcade
-</option>
-
-<option value="battle">
-Battle Royale
-</option>
-
-<option value="fighting">
-Fighting
-</option>
-
-<option value="moba">
-MOBA
-</option>
-
-<option value="mmorpg">
-MMORPG
-</option>
-
-<option value="puzzle">
-Puzzle
-</option>
-
-<option value="racing">
-Racing
-</option>
-
-<option value="rpg">
-RPG
-</option>
-
-<option value="sandbox">
-Sandbox
-</option>
-
-<option value="simulation">
-Simulation
-</option>
-
-<option value="sports">
-Sports
-</option>
-
-<option value="strategy">
-Strategy
-</option>
-
-<option value="survival">
-Survival
-</option>
-
-</select>
-
-
-<select id="status">
-
-<option value="all">
-All Games
-</option>
-
-<option value="free">
-Free
-</option>
-
-<option value="paid">
-Paid
-</option>
-
-</select>
-
-</div>
-
-
-<div
-class="count"
-id="count">
-Showing 100 of 100 games
-</div>
-
-
-
-<!-- GAMES -->
-
-<section
-class="games-grid"
-id="games">
-
-
-<!-- 1 -->
-
-<article
-class="game-card"
-data-name="free fire"
-data-genre="battle action"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#001
-</div>
-
-<div class="cover-emoji">
-🔥
-</div>
-
-<div class="cover-title">
-Free Fire
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-
-<span class="genre">
-Battle Royale
-</span>
-
-<span class="status free">
-FREE
-</span>
-
-</div>
-
-<h3>
-Free Fire
-</h3>
-
-<p>
-Fast-paced mobile battle royale.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Free+Fire"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 2 -->
-
-<article class="game-card"
-data-name="free fire max"
-data-genre="battle action"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#002
-</div>
-
-<div class="cover-emoji">
-🔥
-</div>
-
-<div class="cover-title">
-Free Fire MAX
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Battle Royale
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Free Fire MAX
-</h3>
-
-<p>
-Enhanced battle royale with upgraded visuals.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Free+Fire+MAX"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 3 -->
-
-<article class="game-card"
-data-name="pubg mobile"
-data-genre="battle action"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#003
-</div>
-
-<div class="cover-emoji">
-🪂
-</div>
-
-<div class="cover-title">
-PUBG MOBILE
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Battle Royale
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-PUBG MOBILE
-</h3>
-
-<p>
-Competitive battle royale and tactical action.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=PUBG+MOBILE"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 4 -->
-
-<article class="game-card"
-data-name="call of duty mobile"
-data-genre="action"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#004
-</div>
-
-<div class="cover-emoji">
-🎯
-</div>
-
-<div class="cover-title">
-Call of Duty: Mobile
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-FPS / Action
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Call of Duty: Mobile
-</h3>
-
-<p>
-Multiplayer and battle royale combat.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Call+of+Duty+Mobile"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 5 -->
-
-<article class="game-card"
-data-name="brawl stars"
-data-genre="action moba"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#005
-</div>
-
-<div class="cover-emoji">
-⭐
-</div>
-
-<div class="cover-title">
-Brawl Stars
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Action
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Brawl Stars
-</h3>
-
-<p>
-Quick multiplayer battles with unique brawlers.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Brawl+Stars"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 6 -->
-
-<article class="game-card"
-data-name="clash royale"
-data-genre="strategy"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#006
-</div>
-
-<div class="cover-emoji">
-👑
-</div>
-
-<div class="cover-title">
-Clash Royale
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Strategy
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Clash Royale
-</h3>
-
-<p>
-Real-time card battles and tower defense.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Clash+Royale"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 7 -->
-
-<article class="game-card"
-data-name="clash of clans"
-data-genre="strategy"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#007
-</div>
-
-<div class="cover-emoji">
-🏰
-</div>
-
-<div class="cover-title">
-Clash of Clans
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Strategy
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Clash of Clans
-</h3>
-
-<p>
-Build a village and battle rival clans.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Clash+of+Clans"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 8 -->
-
-<article class="game-card"
-data-name="among us"
-data-genre="party"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#008
-</div>
-
-<div class="cover-emoji">
-🕵️
-</div>
-
-<div class="cover-title">
-Among Us
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Party
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Among Us
-</h3>
-
-<p>
-Find the impostor in multiplayer social deduction.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Among+Us"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 9 -->
-
-<article class="game-card"
-data-name="roblox"
-data-genre="adventure social"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#009
-</div>
-
-<div class="cover-emoji">
-🧱
-</div>
-
-<div class="cover-title">
-Roblox
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Adventure
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Roblox
-</h3>
-
-<p>
-Play and create millions of user-made experiences.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Roblox"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 10 -->
-
-<article class="game-card"
-data-name="stumble guys"
-data-genre="party racing"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#010
-</div>
-
-<div class="cover-emoji">
-🏃
-</div>
-
-<div class="cover-title">
-Stumble Guys
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Racing
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Stumble Guys
-</h3>
-
-<p>
-Chaotic multiplayer obstacle-course racing.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Stumble+Guys"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 11 -->
-
-<article class="game-card"
-data-name="subway surfers"
-data-genre="arcade"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#011
-</div>
-
-<div class="cover-emoji">
-🚇
-</div>
-
-<div class="cover-title">
-Subway Surfers
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Endless Runner
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Subway Surfers
-</h3>
-
-<p>
-Dodge trains and collect coins across cities.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Subway+Surfers"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 12 -->
-
-<article class="game-card"
-data-name="temple run 2"
-data-genre="arcade"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#012
-</div>
-
-<div class="cover-emoji">
-🏃
-</div>
-
-<div class="cover-title">
-Temple Run 2
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Endless Runner
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Temple Run 2
-</h3>
-
-<p>
-Endless running with obstacles and power-ups.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Temple+Run+2"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 13 -->
-
-<article class="game-card"
-data-name="candy crush saga"
-data-genre="puzzle"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#013
-</div>
-
-<div class="cover-emoji">
-🍬
-</div>
-
-<div class="cover-title">
-Candy Crush Saga
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Puzzle
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Candy Crush Saga
-</h3>
-
-<p>
-Match candies through hundreds of levels.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Candy+Crush+Saga"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 14 -->
-
-<article class="game-card"
-data-name="royal match"
-data-genre="puzzle"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#014
-</div>
-
-<div class="cover-emoji">
-👑
-</div>
-
-<div class="cover-title">
-Royal Match
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Puzzle
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Royal Match
-</h3>
-
-<p>
-Match tiles and restore a royal castle.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Royal+Match"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 15 -->
-
-<article class="game-card"
-data-name="gardenscapes"
-data-genre="puzzle simulation"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#015
-</div>
-
-<div class="cover-emoji">
-🌻
-</div>
-
-<div class="cover-title">
-Gardenscapes
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Puzzle
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Gardenscapes
-</h3>
-
-<p>
-Solve puzzles and restore a beautiful garden.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Gardenscapes"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 16 -->
-
-<article class="game-card"
-data-name="homescapes"
-data-genre="puzzle simulation"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#016
-</div>
-
-<div class="cover-emoji">
-🏠
-</div>
-
-<div class="cover-title">
-Homescapes
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Puzzle
-</span>
-
-<span class="status free">
-FREE
-</span>
-</div>
-
-<h3>
-Homescapes
-</h3>
-
-<p>
-Match puzzles while renovating a home.
-</p>
-
-<div class="meta">
-<span>
-Source: <b>APKPure</b>
-</span>
-
-<span>
-Android
-</span>
-</div>
-
-<a
-class="download"
-href="https://apkpure.net/search?q=Homescapes"
-target="_blank"
-rel="noopener">
-Download / View ↗
-</a>
-
-</div>
-
-</article>
-
-
-
-<!-- 17 -->
-
-<article class="game-card"
-data-name="8 ball pool"
-data-genre="sports"
-data-status="free">
-
-<div class="cover">
-
-<div class="cover-bg"></div>
-
-<div class="cover-number">
-#017
-</div>
-
-<div class="cover-emoji">
-🎱
-</div>
-
-<div class="cover-title">
-8 Ball Pool
-</div>
-
-</div>
-
-<div class="game-body">
-
-<div class="game-line">
-<span class="genre">
-Sports
-</span>
-
-<span class="status free">
-FRE
+<style>
+
+.games-section {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.games-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.games-header h2 {
+  margin: 8px 0;
+  font-size: 34px;
+}
+
+.games-header p {
+  color: #777;
+  margin: 0;
+}
+
+.section-badge {
+  display: inline-block;
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.games-count {
+  min-width: 80px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+  background: #f5f5f5;
+}
+
+.games-count strong {
+  display: block;
+  font-size: 25px;
+}
+
+.games-count span {
+  font-size: 12px;
+  color: #777;
+}
+
+.games-controls {
+  display: grid;
+  grid-template-columns: 1fr 200px 180px;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.games-controls input,
+.games-controls select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.games-controls input:focus,
+.games-controls select:focus {
+  border-color: #6366f1;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.game-card {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.25s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+}
+
+.game-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  background: #f2f2f2;
+}
+
+.game-content {
+  padding: 16px;
+}
+
+.game-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  line-height: 1.25;
+}
+
+.game-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.game-tag {
+  font-size: 11px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  background: #f1f1f1;
+}
+
+.game-free {
+  background: #e8f8ee;
+  color: #16803c;
+}
+
+.game-paid {
+  background: #fff3df;
+  color: #a45a00;
+}
+
+.game-description {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.5;
+  min-height: 58px;
+  margin-bottom: 15px;
+}
+
+.download-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding: 11px;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.download-btn:hover {
+  background: #4f46e5;
+}
+
+.no-games {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #777;
+}
+
+.loading-games {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  font-size: 18px;
+}
+
+@media (max-width: 1000px) {
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .games-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .games-controls input {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .games-header {
+    align-items: flex-start;
+  }
+
+  .games-header h2 {
+    font-size: 26px;
+  }
+
+  .game-image {
+    height: 150px;
+  }
+
+  .game-content {
+    padding: 12px;
+  }
+
+  .game-title {
+    font-size: 15px;
+  }
+
+  .game-description {
+    font-size: 12px;
+  }
+
+  .games-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .games-controls input {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .games-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .game-image {
+    height: 135px;
+  }
+}
+
+</style>
+
+
+<script>
+
+/* =========================================
+   100 GAMES
+========================================= */
+
+const games = [
+
+  {
+    name: "Free Fire",
+    genre: "Action",
+    price: "free",
+    description: "Fast-paced battle royale survival shooter.",
+    search: "Free Fire"
+  },
+
+  {
+    name: "Free Fire MAX",
+    genre: "Action",
+    price: "free",
+    description: "Enhanced battle royale experience from Garena.",
+    search: "Free Fire MAX"
+  },
+
+  {
+    name: "PUBG MOBILE",
+    genre: "Action",
+    price: "free",
+    description: "Battle royale shooter with intense multiplayer combat.",
+    search: "PUBG MOBILE"
+  },
+
+  {
+    name: "Call of Duty: Mobile",
+    genre: "Action",
+    price: "free",
+    description: "Multiplayer FPS and battle royale action.",
+    search: "Call of Duty Mobile"
+  },
+
+  {
+    name: "Brawl Stars",
+    genre: "Action",
+    price: "free",
+    description: "Fast multiplayer battles with unique characters.",
+    search: "Brawl Stars"
+  },
+
+  {
+    name: "Clash Royale",
+    genre: "Strategy",
+    price: "free",
+    description: "Real-time card battles and tower strategy.",
+    search: "Clash Royale"
+  },
+
+  {
+    name: "Clash of Clans",
+    genre: "Strategy",
+    price: "free",
+    description: "Build your village and fight enemy clans.",
+    search: "Clash of Clans"
+  },
+
+  {
+    name: "Among Us",
+    genre: "Casual",
+    price: "free",
+    description: "Multiplayer social deduction game.",
+    search: "Among Us"
+  },
+
+  {
+    name: "Roblox",
+    genre: "Online",
+    price: "free",
+    description: "Create, explore and play millions of experiences.",
+    search: "Roblox"
+  },
+
+  {
+    name: "Stumble Guys",
+    genre: "Arcade",
+    price: "free",
+    description: "Chaotic multiplayer obstacle course game.",
+    search: "Stumble Guys"
+  },
+
+  {
+    name: "Subway Surfers",
+    genre: "Arcade",
+    price: "free",
+    description: "Endless running game full of action.",
+    search: "Subway Surfers"
+  },
+
+  {
+    name: "Temple Run 2",
+    genre: "Arcade",
+    price: "free",
+    description: "Run, jump and escape dangerous obstacles.",
+    search: "Temple Run 2"
+  },
+
+  {
+    name: "Candy Crush Saga",
+    genre: "Puzzle",
+    price: "free",
+    description: "Popular match-three puzzle adventure.",
+    search: "Candy Crush Saga"
+  },
+
+  {
+    name: "Royal Match",
+    genre: "Puzzle",
+    price: "free",
+    description: "Match puzzles and restore a royal castle.",
+    search: "Royal Match"
+  },
+
+  {
+    name: "Gardenscapes",
+    genre: "Puzzle",
+    price: "free",
+    description: "Solve puzzles and restore beautiful gardens.",
+    search: "Gardenscapes"
+  },
+
+  {
+    name: "Homescapes",
+    genre: "Puzzle",
+    price: "free",
+    description: "Match puzzles and renovate a family home.",
+    search: "Homescapes"
+  },
+
+  {
+    name: "8 Ball Pool",
+    genre: "Sports",
+    price: "free",
+    description: "Online multiplayer pool game.",
+    search: "8 Ball Pool"
+  },
+
+  {
+    name: "eFootball",
+    genre: "Sports",
+    price: "free",
+    description: "Competitive mobile football experience.",
+    search: "eFootball"
+  },
+
+  {
+    name: "EA SPORTS FC Mobile",
+    genre: "Sports",
+    price: "free",
+    description: "Build your football team and compete online.",
+    search: "EA SPORTS FC Mobile"
+  },
+
+  {
+    name: "Mobile Legends: Bang Bang",
+    genre: "Action",
+    price: "free",
+    description: "Fast 5v5 multiplayer MOBA battles.",
+    search: "Mobile Legends Bang Bang"
+  },
+
+  {
+    name: "League of Legends: Wild Rift",
+    genre: "Action",
+    price: "free",
+    description: "League of Legends adapted for mobile.",
+    search: "League of Legends Wild Rift"
+  },
+
+  {
+    name: "Pokémon GO",
+    genre: "Adventure",
+    price: "free",
+    description: "Explore the real world and catch Pokémon.",
+    search: "Pokemon GO"
+  },
+
+  {
+    name: "Pokémon UNITE",
+    genre: "Action",
+    price: "free",
+    description: "Strategic Pokémon team battles.",
+    search: "Pokemon Unite"
+  },
+
+  {
+    name: "Genshin Impact",
+    genre: "RPG",
+    price: "free",
+    description: "Open-world action RPG adventure.",
+    search: "Genshin Impact"
+  },
+
+  {
+    name: "Honkai: Star Rail",
+    genre: "RPG",
+    price: "free",
+    description: "Turn-based space fantasy RPG.",
+    search: "Honkai Star Rail"
+  },
+
+  {
+    name: "Zenless Zone Zero",
+    genre: "RPG",
+    price: "free",
+    description: "Urban fantasy action RPG.",
+    search: "Zenless Zone Zero"
+  },
+
+  {
+    name: "Wuthering Waves",
+    genre: "RPG",
+    price: "free",
+    description: "Open-world action RPG with fast combat.",
+    search: "Wuthering Waves"
+  },
+
+  {
+    name: "Where Winds Meet",
+    genre: "RPG",
+    price: "free",
+    description: "Open-world martial arts action RPG.",
+    search: "Where Winds Meet"
+  },
+
+  {
+    name: "Asphalt 9: Legends",
+    genre: "Racing",
+    price: "free",
+    description: "High-speed arcade racing experience.",
+    search: "Asphalt 9 Legends"
+  },
+
+  {
+    name: "Asphalt Legends Unite",
+    genre: "Racing",
+    price: "free",
+    description: "Multiplayer arcade racing.",
+    search: "Asphalt Legends Unite"
+  },
+
+  {
+    name: "Real Racing 3",
+    genre: "Racing",
+    price: "free",
+    description: "Realistic racing experience on mobile.",
+    search: "Real Racing 3"
+  },
+
+  {
+    name: "Need for Speed No Limits",
+    genre: "Racing",
+    price: "free",
+    description: "Street racing and car customization.",
+    search: "Need for Speed No Limits"
+  },
+
+  {
+    name: "CarX Street",
+    genre: "Racing",
+    price: "free",
+    description: "Open-world street racing game.",
+    search: "CarX Street"
+  },
+
+  {
+    name: "CarX Drift Racing 2",
+    genre: "Racing",
+    price: "free",
+    description: "Drifting and competitive racing.",
+    search: "CarX Drift Racing 2"
+  },
+
+  {
+    name: "Car Parking Multiplayer",
+    genre: "Simulation",
+    price: "free",
+    description: "Open-world driving and parking simulator.",
+    search: "Car Parking Multiplayer"
+  },
+
+  {
+    name: "Car Parking Multiplayer 2",
+    genre: "Simulation",
+    price: "free",
+    description: "Large multiplayer driving simulator.",
+    search: "Car Parking Multiplayer 2"
+  },
+
+  {
+    name: "Hill Climb Racing",
+    genre: "Racing",
+    price: "free",
+    description: "Physics-based hill driving game.",
+    search: "Hill Climb Racing"
+  },
+
+  {
+    name: "Hill Climb Racing 2",
+    genre: "Racing",
+    price: "free",
+    description: "Competitive physics racing sequel.",
+    search: "Hill Climb Racing 2"
+  },
+
+  {
+    name: "Traffic Rider",
+    genre: "Racing",
+    price: "free",
+    description: "First-person motorcycle racing.",
+    search: "Traffic Rider"
+  },
+
+  {
+    name: "Traffic Racer",
+    genre: "Racing",
+    price: "free",
+    description: "Endless highway racing.",
+    search: "Traffic Racer"
+  },
+
+  {
+    name: "Angry Birds 2",
+    genre: "Casual",
+    price: "free",
+    description: "Slingshot birds through challenging levels.",
+    search: "Angry Birds 2"
+  },
+
+  {
+    name: "Fruit Ninja",
+    genre: "Arcade",
+    price: "free",
+    description: "Slice fruit and beat your high score.",
+    search: "Fruit Ninja"
+  },
+
+  {
+    name: "Jetpack Joyride",
+    genre: "Arcade",
+    price: "free",
+    description: "Endless arcade adventure with jetpacks.",
+    search: "Jetpack Joyride"
+  },
+
+  {
+    name: "Pou",
+    genre: "Casual",
+    price: "free",
+    description: "Take care of your virtual pet.",
+    search: "Pou"
+  },
+
+  {
+    name: "Geometry Dash Lite",
+    genre: "Arcade",
+    price: "free",
+    description: "Rhythm-based platforming challenge.",
+    search: "Geometry Dash Lite"
+  },
+
+  {
+    name: "Sonic Dash",
+    genre: "Arcade",
+    price: "free",
+    description: "Fast endless runner featuring Sonic.",
+    search: "Sonic Dash"
+  },
+
+  {
+    name: "Talking Tom Gold Run",
+    genre: "Arcade",
+    price: "free",
+    description: "Endless running adventure with Talking Tom.",
+    search: "Talking Tom Gold Run"
+  },
+
+  {
+    name: "Hungry Shark Evolution",
+    genre: "Action",
+    price: "free",
+    description: "Play as a hungry shark and explore the ocean.",
+    search: "Hungry Shark Evolution"
+  },
+
+  {
+    name: "Zombie Tsunami",
+    genre: "Arcade",
+    price: "free",
+    description: "Build a zombie horde and run through cities.",
+    search: "Zombie Tsunami"
+  },
+
+  {
+    name: "Plants vs. Zombies 2",
+    genre: "Strategy",
+    price: "free",
+    description: "Defend your garden against waves of zombies.",
+    search: "Plants vs Zombies 2"
+  },
+
+  {
+    name: "Bloons TD 6",
+    genre: "Strategy",
+    price: "paid",
+    description: "Tower defense strategy with monkeys.",
+    search: "Bloons TD 6"
+  },
+
+  {
+    name: "Kingdom Rush",
+    genre: "Strategy",
+    price: "paid",
+    description: "Classic fantasy tower defense.",
+    search: "Kingdom Rush"
+  },
+
+  {
+    name: "Terraria",
+    genre: "Adventure",
+    price: "paid",
+    description: "Explore, build and survive in a huge sandbox.",
+    search: "Terraria"
+  },
+
+  {
+    name: "Minecraft",
+    genre: "Adventure",
+    price: "paid",
+    description: "Build, explore and survive in a block world.",
+    search: "Minecraft"
+  },
+
+  {
+    name: "Stardew Valley",
+    genre: "Simulation",
+    price: "paid",
+    description: "Relaxing farming and life simulation RPG.",
+    search: "Stardew Valley"
+  },
+
+  {
+    name: "Dead Cells",
+    genre: "Action",
+    price: "paid",
+    description: "Fast roguelike action platformer.",
+    search: "Dead Cells"
+  },
+
+  {
+    name: "GRID Autosport",
+    genre: "Racing",
+    price: "paid",
+    description: "Console-quality racing on mobile.",
+    search: "GRID Autosport"
+  },
+
+  {
+    name: "Grand Theft Auto III",
+    genre: "Action",
+    price: "paid",
+    description: "Classic open-world crime adventure.",
+    search: "Grand Theft Auto III"
+  },
+
+  {
+    name: "Grand Theft Auto: Vice City",
+    genre: "Action",
+    price: "paid",
+    description: "Open-world crime adventure set in Vice City.",
+    search: "Grand Theft Auto Vice City"
+  },
+
+  {
+    name: "Grand Theft Auto: San Andreas",
+    genre: "Action",
+    price: "paid",
+    description: "Open-world action classic.",
+    search: "Grand Theft Auto San Andreas"
+  },
+
+  {
+    name: "GTA: Liberty City Stories",
+    genre: "Action",
+    price: "paid",
+    description: "Open-world GTA adventure.",
+    search: "GTA Liberty City Stories"
+  },
+
+  {
+    name: "GTA: Chinatown Wars",
+    genre: "Action",
+    price: "paid",
+    description: "Classic GTA adventure with a unique perspective.",
+    search: "GTA Chinatown Wars"
+  },
+
+  {
+    name: "GTA III – Definitive Edition",
+    genre: "Action",
+    price: "paid",
+    description: "Definitive edition of GTA III.",
+    search: "GTA III Definitive Edition"
+  },
+
+  {
+    name: "GTA: Vice City – Definitive Edition",
+    genre: "Action",
+    price: "paid",
+    description: "Definitive edition of Vice City.",
+    search: "GTA Vice City Definitive Edition"
+  },
+
+  {
+    name: "GTA: San Andreas – Definitive Edition",
+    genre: "Action",
+    price: "paid",
+    description: "Definitive edition of San Andreas.",
+    search: "GTA San Andreas Definitive Edition"
+  },
+
+  {
+    name: "Bully: Anniversary Edition",
+    genre: "Action",
+    price: "paid",
+    description: "Classic school-themed open-world adventure.",
+    search: "Bully Anniversary Edition"
+  },
+
+  {
+    name: "The Room",
+    genre: "Puzzle",
+    price: "paid",
+    description: "Atmospheric 3D puzzle adventure.",
+    search: "The Room Fireproof Games"
+  },
+
+  {
+    name: "The Room Two",
+    genre: "Puzzle",
+    price: "paid",
+    description: "Mystery puzzle adventure sequel.",
+    search: "The Room Two"
+  },
+
+  {
+    name: "The Room Three",
+    genre: "Puzzle",
+    price: "paid",
+    description: "Complex mechanical puzzle adventure.",
+    search: "The Room Three"
+  },
+
+  {
+    name: "Monument Valley",
+    genre: "Puzzle",
+    price: "paid",
+    description: "Beautiful optical illusion puzzle adventure.",
+    search: "Monument Valley"
+  },
+
+  {
+    name: "Monument Valley 2",
+    genre: "Puzzle",
+    price: "paid",
+    description: "Stylish puzzle adventure sequel.",
+    search: "Monument Valley 2"
+  },
+
+  {
+    name: "Limbo",
+    genre: "Adventure",
+    price: "paid",
+    description: "Dark atmospheric puzzle platformer.",
+    search: "Limbo Playdead"
+  },
+
+  {
+    name: "Inside",
+    genre: "Adventure",
+    price: "paid",
+    description: "Dark cinematic puzzle adventure.",
+    search: "Inside Playdead"
+  },
+
+  {
+    name: "Leo's Fortune",
+    genre: "Adventure",
+    price: "paid",
+    description: "Beautiful platform adventure.",
+    search: "Leo's Fortune"
+  },
+
+  {
+    name: "Alto's Adventure",
+    genre: "Arcade",
+    price: "free",
+    description: "Beautiful endless snowboarding adventure.",
+    search: "Alto's Adventure"
+  },
+
+  {
+    name: "Alto's Odyssey",
+    genre: "Arcade",
+    price: "free",
+    description: "Endless sandboarding adventure.",
+    search: "Alto's Odyssey"
+  },
+
+  {
+    name: "Crossy Road",
+    genre: "Arcade",
+    price: "free",
+    description: "Endless road-crossing arcade game.",
+    search: "Crossy Road"
+  },
+
+  {
+    name: "Hungry Shark World",
+    genre: "Action",
+    price: "free",
+    description: "Explore the ocean as a powerful shark.",
+    search: "Hungry Shark World"
+  },
+
+  {
+    name: "World of Tanks Blitz",
+    genre: "Action",
+    price: "free",
+    description: "Online multiplayer tank battles.",
+    search: "World of Tanks Blitz"
+  },
+
+  {
+    name: "War Robots",
+    genre: "Action",
+    price: "free",
+    description: "Multiplayer robot combat.",
+    search: "War Robots"
+  },
+
+  {
+    name: "Shadow Fight 4: Arena",
+    genre: "Action",
+    price: "free",
+    description: "Competitive fighting battles.",
+    search: "Shadow Fight 4 Arena"
+  },
+
+  {
+    name: "Shadow Fight 3",
+    genre: "Action",
+    price: "free",
+    description: "Story-driven fighting RPG.",
+    search: "Shadow Fight 3"
+  },
+
+  {
+    name: "Mortal Kombat Mobile",
+    genre: "Action",
+    price: "free",
+    description: "Iconic fighting franchise on mobile.",
+    search: "Mortal Kombat Mobile"
+  },
+
+  {
+    name: "Injustice 2",
+    genre: "Action",
+    price: "free",
+    description: "DC superheroes fighting game.",
+    search: "Injustice 2"
+  },
+
+  {
+    name: "Marvel Contest of Champions",
+    genre: "Action",
+    price: "free",
+    description: "Marvel superhero fighting game.",
+    search: "Marvel Contest of Champions"
+  },
+
+  {
+    name: "The Battle Cats",
+    genre: "Strategy",
+    price: "free",
+    description: "Funny cat-based tower defense strategy.",
+    search: "The Battle Cats"
+  },
+
+  {
+    name: "Summoners War",
+    genre: "RPG",
+    price: "free",
+    description: "Monster collecting RPG.",
+    search: "Summoners War"
+  },
+
+  {
+    name: "AFK Arena",
+    genre: "RPG",
+    price: "free",
+    description: "Fantasy idle RPG adventure.",
+    search: "AFK Arena"
+  },
+
+  {
+    name: "RAID: Shadow Legends",
+    genre: "RPG",
+    price: "free",
+    description: "Fantasy collectible RPG.",
+    search: "Raid Shadow Legends"
+  },
+
+  {
+    name: "Diablo Immortal",
+    genre: "RPG",
+    price: "free",
+    description: "Dark fantasy action RPG.",
+    search: "Diablo Immortal"
+  },
+
+  {
+    name: "Albion Online",
+    genre: "Online",
+    price: "free",
+    description: "Sandbox MMORPG with player-driven economy.",
+    search: "Albion Online"
+  },
+
+  {
+    name: "Old School RuneScape",
+    genre: "RPG",
+    price: "free",
+    description: "Classic online MMORPG adventure.",
+    search: "Old School RuneScape"
+  },
+
+  {
+    name: "Black Desert Mobile",
+    genre: "RPG",
+    price: "free",
+    description: "Large-scale fantasy MMORPG.",
+    search: "Black Desert Mobile"
+  },
+
+  {
+    name: "Toram Online",
+    genre: "RPG",
+    price: "free",
+    description: "Anime-style open-world MMORPG.",
+    search: "Toram Online"
+  },
+
+  {
+    name: "Sky: Children of the Light",
+    genre: "Adventure",
+    price: "free",
+    description: "Beautiful social adventure game.",
+    search: "Sky Children of the Light"
+  },
+
+  {
+    name: "LifeAfter",
+    genre: "Action",
+    price: "free",
+    description: "Post-apocalyptic survival adventure.",
+    search: "LifeAfter"
+  },
+
+  {
+    name: "Last Day on Earth: Survival",
+    genre: "Action",
+    price: "free",
+    description: "Post-apocalyptic survival game.",
+    search: "Last Day on Earth Survival"
+  },
+
+  {
+    name: "ARK: Ultimate Mobile Edition",
+    genre: "Adventure",
+    price: "free",
+    description: "Survive and tame dinosaurs in an open world.",
+    search: "ARK Ultimate Mobile Edition"
+  },
+
+  {
+    name: "Don't Starve: Pocket Edition",
+    genre: "Adventure",
+    price: "paid",
+    description: "Dark survival adventure.",
+    search: "Don't Starve Pocket Edition"
+  },
+
+  {
+    name: "WorldBox",
+    genre: "Simulation",
+    price: "free",
+    description: "Create and control your own world.",
+    search: "WorldBox"
+  }
+
+];
+
+
+/* =========================================
+   FALLBACK IMAGE
+========================================= */
+
+const fallbackImage =
+"https://via.placeholder.com/600x400?text=Game";
+
+
+/* =========================================
+   CREATE DOWNLOAD LINK
+========================================= */
+
+function getDownloadLink(game) {
+
+  const query = encodeURIComponent(game.search);
+
+  if (game.price === "free") {
+
+    return "https://apkpure.net/search?q=" + query;
+
+  }
+
+  return "https://play.google.com/store/search?q=" +
+         query +
+         "&c=apps&hl=en";
+
+}
+
+
+/* =========================================
+   GET REAL GAME IMAGE
+   iTunes / App Store artwork API
+========================================= */
+
+async function getGameImage(game) {
+
+  try {
+
+    const query = encodeURIComponent(game.search);
+
+    const response = await fetch(
+      "https://itunes.apple.com/search?term=" +
+      query +
+      "&entity=software&limit=5"
+    );
+
+    const data = await response.json();
+
+    if (data.results && data.results.length > 0) {
+
+      let result = data.results.find(item => {
+
+        const name =
+          (item.trackName || "").toLowerCase();
+
+        return name.includes(
+          game.name
+            .replace(":", "")
+            .replace("–", "")
+            .toLowerCase()
+            .split(" ")[0]
+        );
+
+      });
+
+      if (!result) {
+        result = data.results[0];
+      }
+
+      if (result.artworkUrl512) {
+
+        return result.artworkUrl512
+          .replace("100x100", "512x512");
+
+      }
+
+      if (result.artworkUrl100) {
+
+        return result.artworkUrl100
+          .replace("100x100", "512x512");
+
+      }
+
+    }
+
+  } catch (error) {
+
+    console.log(
+      "Image error:",
+      game.name
+    );
+
+  }
+
+  return fallbackImage;
+}
+
+
+/* =========================================
+   CREATE GAME CARD
+========================================= */
+
+async function createGameCard(game, index) {
+
+  const image = await getGameImage(game);
+
+  const card = document.createElement("article");
+
+  card.className = "game-card";
+
+  card.dataset.genre = game.genre;
+  card.dataset.price = game.price;
+  card.dataset.name = game.name.toLowerCase();
+
+  card.innerHTML = `
+
+    <img
+      class="game-image"
+      src="${image}"
+      alt="${game.name} game"
+      loading="${index < 12 ? "eager" : "lazy"}"
+      onerror="this.src='${fallbackImage}'"
+    >
+
+    <div class="game-content">
+
+      <div class="game-title">
+        ${game.name}
+      </div>
+
+      <div class="game-meta">
+
+        <span class="game-tag">
+          ${game.genre}
+        </span>
+
+        <span class="game-tag ${
+          game.price === "free"
+          ? "game-free"
+          : "game-paid"
+        }">
+
+          ${
+            game.price === "free"
+            ? "FREE"
+            : "PAID"
+          }
+
+        </span>
+
+      </div>
+
+      <div class="game-description">
+        ${game.description}
+      </div>
+
+      <a
+        class="download-btn"
+        href="${getDownloadLink(game)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ⬇️ Download
+      </a>
+
+    </div>
+
+  `;
+
+  return card;
+}
+
+
+/* =========================================
+   RENDER ALL GAMES
+========================================= */
+
+async function renderGames(list = games) {
+
+  const grid =
+    document.getElementById("gamesGrid");
+
+  grid.innerHTML =
+    '<div class="loading-games">🎮 Loading games...</div>';
+
+  const fragment =
+    document.createDocumentFragment();
+
+  for (let i = 0; i < list.length; i++) {
+
+    const card =
+      await createGameCard(list[i], i);
+
+    fragment.appendChild(card);
+
+  }
+
+  grid.innerHTML = "";
+
+  grid.appendChild(fragment);
+
+  document.getElementById("gamesCount")
+    .textContent = list.length;
+
+}
+
+
+/* =========================================
+   SEARCH + FILTER
+========================================= */
+
+function filterGames() {
+
+  const search =
+    document
+      .getElementById("gameSearch")
+      .value
+      .toLowerCase()
+      .trim();
+
+  const genre =
+    document
+      .getElementById("genreFilter")
+      .value;
+
+  const price =
+    document
+      .getElementById("priceFilter")
+      .value;
+
+  const filtered =
+    games.filter(game => {
+
+      const matchesSearch =
+        game.name
+          .toLowerCase()
+          .includes(search);
+
+      const matchesGenre =
+        genre === "all" ||
+        game.genre === genre;
+
+      const matchesPrice =
+        price === "all" ||
+        game.price === price;
+
+      return (
+        matchesSearch &&
+        matchesGenre &&
+        matchesPrice
+      );
+
+    });
+
+  renderGames(filtered);
+
+}
+
+
+/* =========================================
+   EVENTS
+========================================= */
+
+document
+  .getElementById("gameSearch")
+  .addEventListener(
+    "input",
+    filterGames
+  );
+
+document
+  .getElementById("genreFilter")
+  .addEventListener(
+    "change",
+    filterGames
+  );
+
+document
+  .getElementById("priceFilter")
+  .addEventListener(
+    "change",
+    filterGames
+  );
+
+
+/* =========================================
+   START
+========================================= */
+
+renderGames(games);
+
+</script>
