@@ -6,14 +6,17 @@
 
 <title>Gaming & Rewards - SpeedTools</title>
 
-<meta name="description" content="Discover games, apps and selected reward opportunities on SpeedTools.">
+<meta name="description" content="Discover 100 Android games, mobile apps and selected reward opportunities on SpeedTools.">
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -27,7 +30,7 @@ header{
     position:sticky;
     top:0;
     z-index:100;
-    background:white;
+    background:#fff;
     border-bottom:1px solid #e8ebf2;
 }
 
@@ -60,7 +63,7 @@ header{
 /* HERO */
 
 .hero{
-    padding:75px 20px;
+    padding:72px 20px 85px;
     text-align:center;
     background:linear-gradient(135deg,#eef2ff,#f8fafc);
 }
@@ -87,13 +90,13 @@ header{
 }
 
 .hero p{
-    max-width:700px;
+    max-width:720px;
     margin:auto;
     color:#667085;
     font-size:18px;
 }
 
-/* NAVIGATION */
+/* CATEGORY */
 
 .category-nav{
     max-width:1000px;
@@ -103,7 +106,7 @@ header{
 }
 
 .category-box{
-    background:white;
+    background:#fff;
     border:1px solid #e5e7eb;
     border-radius:18px;
     padding:12px;
@@ -120,7 +123,6 @@ header{
     text-align:center;
     border-radius:12px;
     font-weight:800;
-    transition:.2s;
 }
 
 .category-box a:hover{
@@ -135,8 +137,6 @@ header{
     margin:auto;
     padding:60px 20px;
 }
-
-/* GENERAL SECTION */
 
 .section{
     margin-bottom:70px;
@@ -168,7 +168,7 @@ header{
     background:#111827;
     border-radius:25px;
     padding:35px;
-    color:white;
+    color:#fff;
 }
 
 .games-section .section-header p{
@@ -177,6 +177,34 @@ header{
 
 .games-section .section-header small{
     color:#a5b4fc;
+}
+
+.controls{
+    display:grid;
+    grid-template-columns:1fr 190px 150px;
+    gap:12px;
+    margin:25px 0;
+}
+
+.controls input,
+.controls select{
+    width:100%;
+    padding:13px 14px;
+    border-radius:11px;
+    border:1px solid #3a4659;
+    background:#182235;
+    color:#fff;
+    outline:none;
+}
+
+.controls input::placeholder{
+    color:#8d98a9;
+}
+
+.results{
+    color:#aab4c5;
+    font-size:13px;
+    margin-bottom:16px;
 }
 
 .games-grid{
@@ -189,38 +217,120 @@ header{
     background:#1d2636;
     border:1px solid #303b4d;
     border-radius:18px;
-    padding:22px;
+    padding:20px;
     transition:.2s;
+    display:flex;
+    flex-direction:column;
 }
 
 .game-card:hover{
     transform:translateY(-4px);
+    border-color:#59657a;
+}
+
+.game-card.hidden{
+    display:none;
+}
+
+.game-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:13px;
 }
 
 .game-icon{
-    font-size:38px;
-    margin-bottom:14px;
+    width:58px;
+    height:58px;
+    border-radius:16px;
+    background:#273249;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+}
+
+.status{
+    font-size:10px;
+    font-weight:900;
+    padding:5px 8px;
+    border-radius:20px;
+    text-transform:uppercase;
+}
+
+.status.free{
+    background:#173a2b;
+    color:#6ee7b7;
+}
+
+.status.paid{
+    background:#3d2b13;
+    color:#fbbf24;
 }
 
 .game-card h3{
-    margin-bottom:7px;
+    font-size:18px;
+    margin-bottom:4px;
+}
+
+.genre{
+    font-size:11px;
+    color:#a5b4fc;
+    font-weight:800;
+    margin-bottom:8px;
+    text-transform:uppercase;
 }
 
 .game-card p{
     color:#b8c1cf;
-    font-size:14px;
+    font-size:13px;
+    min-height:62px;
+}
+
+.game-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin:15px 0;
+    font-size:11px;
+    color:#aab4c5;
+}
+
+.game-meta span{
+    background:#172033;
+    border-radius:8px;
+    padding:8px;
+}
+
+.game-meta b{
+    display:block;
+    color:#f3f4f6;
+    font-size:10px;
+    margin-bottom:2px;
 }
 
 .game-button{
     display:block;
-    margin-top:18px;
+    margin-top:auto;
     text-align:center;
     text-decoration:none;
     background:#6366f1;
-    color:white;
+    color:#fff;
     padding:11px;
     border-radius:10px;
     font-weight:800;
+    font-size:13px;
+}
+
+.game-button:hover{
+    background:#4f46e5;
+}
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:35px;
+    color:#aab4c5;
 }
 
 /* APPS */
@@ -243,19 +353,13 @@ header{
 }
 
 .app-card{
-    background:white;
+    background:#fff;
     border:1px solid #dbeafe;
     border-radius:18px;
     padding:24px;
     display:flex;
     gap:18px;
     align-items:flex-start;
-    transition:.2s;
-}
-
-.app-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(37,99,235,.08);
 }
 
 .app-icon{
@@ -308,17 +412,10 @@ header{
 }
 
 .offer-card{
-    background:white;
+    background:#fff;
     border:1px solid #fed7aa;
     border-radius:18px;
     padding:24px;
-    position:relative;
-    transition:.2s;
-}
-
-.offer-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(234,88,12,.08);
 }
 
 .offer-icon{
@@ -363,7 +460,7 @@ header{
 
 .info{
     margin-top:20px;
-    background:white;
+    background:#fff;
     border:1px solid #e5e7eb;
     border-radius:20px;
     padding:30px;
@@ -399,15 +496,19 @@ footer{
 
 /* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:900px){
 
     .games-grid,
     .offers-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .controls{
         grid-template-columns:1fr 1fr;
     }
 
-    .apps-grid{
-        grid-template-columns:1fr;
+    .controls input{
+        grid-column:1/-1;
     }
 
 }
@@ -419,7 +520,8 @@ footer{
     }
 
     .games-grid,
-    .offers-grid{
+    .offers-grid,
+    .apps-grid{
         grid-template-columns:1fr;
     }
 
@@ -430,14 +532,20 @@ footer{
     }
 
     .hero{
-        padding:55px 20px;
+        padding:55px 20px 70px;
+    }
+
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .controls input{
+        grid-column:auto;
     }
 
 }
-
 </style>
 </head>
-
 
 <body>
 
@@ -457,7 +565,6 @@ footer{
 
 </header>
 
-
 <!-- HERO -->
 
 <section class="hero">
@@ -471,12 +578,11 @@ Explore <span>More.</span>
 </h1>
 
 <p>
-Discover games, mobile apps and selected opportunities
+Discover 100 Android games, mobile apps and selected opportunities
 in one simple SpeedTools hub.
 </p>
 
 </section>
-
 
 <!-- CATEGORY NAVIGATION -->
 
@@ -485,7 +591,7 @@ in one simple SpeedTools hub.
 <div class="category-box">
 
 <a href="#games">
-🎮 Free Games
+🎮 Games
 </a>
 
 <a href="#apps">
@@ -500,9 +606,7 @@ in one simple SpeedTools hub.
 
 </div>
 
-
 <main class="container">
-
 
 <!-- GAMES -->
 
@@ -510,87 +614,3548 @@ in one simple SpeedTools hub.
 
 <div class="section-header">
 
-<small>🎮 GAMING</small>
+<small>🎮 ANDROID GAME CATALOG</small>
 
-<h2>Free Games</h2>
+<h2>100 Games</h2>
 
 <p>
-Discover casual and mobile gaming opportunities.
+Browse popular Android games and open their external source page.
 </p>
 
 </div>
 
+<div class="controls">
+
+<input
+id="gameSearch"
+type="search"
+placeholder="🔎 Search games..."
+aria-label="Search games"
+>
+
+<select id="genreFilter">
+
+<option value="all">
+All genres
+</option>
+
+<option value="action">
+Action
+</option>
+
+<option value="adventure">
+Adventure
+</option>
+
+<option value="arcade">
+Arcade
+</option>
+
+<option value="battle royale">
+Battle Royale
+</option>
+
+<option value="fighting">
+Fighting
+</option>
+
+<option value="moba">
+MOBA
+</option>
+
+<option value="mmorpg">
+MMORPG
+</option>
+
+<option value="puzzle">
+Puzzle
+</option>
+
+<option value="racing">
+Racing
+</option>
+
+<option value="rpg">
+RPG
+</option>
+
+<option value="sandbox">
+Sandbox
+</option>
+
+<option value="simulation">
+Simulation
+</option>
+
+<option value="sports">
+Sports
+</option>
+
+<option value="strategy">
+Strategy
+</option>
+
+<option value="survival">
+Survival
+</option>
+
+</select>
+
+<select id="statusFilter">
+
+<option value="all">
+All
+</option>
+
+<option value="free">
+Free
+</option>
+
+<option value="paid">
+Paid
+</option>
+
+</select>
+
+</div>
+
+<div class="results" id="resultsCount">
+Showing 100 games
+</div>
 
 <div class="games-grid">
 
+<!-- 1 -->
 
-<div class="game-card">
+<article class="game-card"
+data-name="free fire"
+data-genre="battle royale"
+data-status="free">
+
+<div class="game-top">
 
 <div class="game-icon">
-🧩
+🎮
+</div>
+
+<span class="status free">
+Free
+</span>
+
 </div>
 
 <h3>
-Puzzle Games
+Free Fire
 </h3>
 
-<p>
-Explore relaxing puzzle and brain games.
-</p>
-
-<a href="#" class="game-button">
-Explore Game
-</a>
-
+<div class="genre">
+Battle Royale
 </div>
-
-
-<div class="game-card">
-
-<div class="game-icon">
-🏎️
-</div>
-
-<h3>
-Racing Games
-</h3>
 
 <p>
-Discover fast-paced racing experiences.
+Fast-paced battle royale with short matches.
 </p>
 
-<a href="#" class="game-button">
-Explore Game
+<div class="game-meta">
+
+<span>
+<b>Source</b>
+APKPure
+</span>
+
+<span>
+<b>Access</b>
+Free to play
+</span>
+
+</div>
+
+<a
+class="game-button"
+href="https://apkpure.net/search?q=Free+Fire"
+target="_blank"
+rel="noopener noreferrer"
+>
+Download / View ↗
 </a>
 
+</article>
+
+<!-- 2 -->
+
+<article class="game-card"
+data-name="free fire max"
+data-genre="battle royale"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🔥</div>
+<span class="status free">Free</span>
 </div>
 
+<h3>Free Fire MAX</h3>
 
-<div class="game-card">
-
-<div class="game-icon">
-⚔️
+<div class="genre">
+Battle Royale
 </div>
-
-<h3>
-Action Games
-</h3>
 
 <p>
-Find interesting action and adventure games.
+Enhanced graphics and large-scale battle royale action.
 </p>
 
-<a href="#" class="game-button">
-Explore Game
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Free+Fire+MAX"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
 </a>
+
+</article>
+
+<!-- 3 -->
+
+<article class="game-card"
+data-name="pubg mobile"
+data-genre="battle royale"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🪂</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>PUBG MOBILE</h3>
+
+<div class="genre">Battle Royale</div>
+
+<p>
+Competitive battle royale with classic and tactical modes.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=PUBG+MOBILE"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 4 -->
+
+<article class="game-card"
+data-name="call of duty mobile"
+data-genre="action fps"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🔫</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Call of Duty: Mobile</h3>
+
+<div class="genre">Action / FPS</div>
+
+<p>
+Multiplayer and battle royale action from Call of Duty.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Call+of+Duty+Mobile"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 5 -->
+
+<article class="game-card"
+data-name="brawl stars"
+data-genre="action"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⭐</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Brawl Stars</h3>
+
+<div class="genre">Action</div>
+
+<p>
+Quick multiplayer battles with a large roster of brawlers.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Brawl+Stars"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 6 -->
+
+<article class="game-card"
+data-name="clash royale"
+data-genre="strategy"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">👑</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Clash Royale</h3>
+
+<div class="genre">Strategy</div>
+
+<p>
+Real-time card battles featuring Clash characters.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Clash+Royale"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 7 -->
+
+<article class="game-card"
+data-name="clash of clans"
+data-genre="strategy"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏰</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Clash of Clans</h3>
+
+<div class="genre">Strategy</div>
+
+<p>
+Build a village, train troops and battle other clans.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Clash+of+Clans"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 8 -->
+
+<article class="game-card"
+data-name="among us"
+data-genre="party social"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🕵️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Among Us</h3>
+
+<div class="genre">Party / Social</div>
+
+<p>
+Find the impostor in this multiplayer social deduction game.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Among+Us"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 9 -->
+
+<article class="game-card"
+data-name="roblox"
+data-genre="adventure social"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🧱</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Roblox</h3>
+
+<div class="genre">Adventure / Social</div>
+
+<p>
+Play and create experiences across a huge online platform.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Roblox"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 10 -->
+
+<article class="game-card"
+data-name="stumble guys"
+data-genre="party racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏃</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Stumble Guys</h3>
+
+<div class="genre">Party / Racing</div>
+
+<p>
+Race through chaotic obstacle courses against other players.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Stumble+Guys"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 11 -->
+
+<article class="game-card"
+data-name="subway surfers"
+data-genre="endless runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🚇</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Subway Surfers</h3>
+
+<div class="genre">Endless Runner</div>
+
+<p>
+Run, dodge trains and collect coins in colorful cities.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Subway+Surfers"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 12 -->
+
+<article class="game-card"
+data-name="temple run 2"
+data-genre="endless runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏃</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Temple Run 2</h3>
+
+<div class="genre">Endless Runner</div>
+
+<p>
+Classic endless running with obstacles and power-ups.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Temple+Run+2"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 13 -->
+
+<article class="game-card"
+data-name="candy crush saga"
+data-genre="puzzle"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🍬</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Candy Crush Saga</h3>
+
+<div class="genre">Puzzle</div>
+
+<p>
+Match candies and clear hundreds of puzzle levels.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Candy+Crush+Saga"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 14 -->
+
+<article class="game-card"
+data-name="royal match"
+data-genre="puzzle"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">👑</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Royal Match</h3>
+
+<div class="genre">Puzzle</div>
+
+<p>
+Match tiles and restore a royal castle through puzzles.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Royal+Match"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 15 -->
+
+<article class="game-card"
+data-name="gardenscapes"
+data-genre="puzzle simulation"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🌻</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Gardenscapes</h3>
+
+<div class="genre">Puzzle / Simulation</div>
+
+<p>
+Solve match-3 puzzles and restore a beautiful garden.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Gardenscapes"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 16 -->
+
+<article class="game-card"
+data-name="homescapes"
+data-genre="puzzle simulation"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏠</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Homescapes</h3>
+
+<div class="genre">Puzzle / Simulation</div>
+
+<p>
+Match-3 puzzles combined with home renovation.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Homescapes"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 17 -->
+
+<article class="game-card"
+data-name="8 ball pool"
+data-genre="sports"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🎱</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>8 Ball Pool</h3>
+
+<div class="genre">Sports</div>
+
+<p>
+Play online pool matches and tournaments.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=8+Ball+Pool"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 18 -->
+
+<article class="game-card"
+data-name="efootball"
+data-genre="sports football"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚽</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>eFootball</h3>
+
+<div class="genre">Sports / Football</div>
+
+<p>
+Console-style football gameplay on mobile.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=eFootball"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 19 -->
+
+<article class="game-card"
+data-name="ea sports fc mobile"
+data-genre="sports football"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚽</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>EA SPORTS FC Mobile</h3>
+
+<div class="genre">Sports / Football</div>
+
+<p>
+Build your squad and play football matches online.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=EA+SPORTS+FC+Mobile"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 20 -->
+
+<article class="game-card"
+data-name="mobile legends bang bang"
+data-genre="moba"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚔️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Mobile Legends: Bang Bang</h3>
+
+<div class="genre">MOBA</div>
+
+<p>
+Fast 5v5 mobile MOBA matches.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Mobile+Legends+Bang+Bang"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 21 -->
+
+<article class="game-card"
+data-name="league of legends wild rift"
+data-genre="moba"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🛡️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>League of Legends: Wild Rift</h3>
+
+<div class="genre">MOBA</div>
+
+<p>
+League of Legends adapted for mobile 5v5 play.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=League+of+Legends+Wild+Rift"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 22 -->
+
+<article class="game-card"
+data-name="pokemon go"
+data-genre="ar adventure"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🔴</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Pokémon GO</h3>
+
+<div class="genre">AR / Adventure</div>
+
+<p>
+Catch Pokémon and explore the world using augmented reality.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Pokemon+GO"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 23 -->
+
+<article class="game-card"
+data-name="pokemon unite"
+data-genre="moba"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚡</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Pokémon UNITE</h3>
+
+<div class="genre">MOBA</div>
+
+<p>
+Team-based Pokémon battles with strategic objectives.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Pokemon+UNITE"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 24 -->
+
+<article class="game-card"
+data-name="genshin impact"
+data-genre="rpg action"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🌌</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Genshin Impact</h3>
+
+<div class="genre">RPG / Action</div>
+
+<p>
+Open-world action RPG with elemental combat.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Genshin+Impact"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 25 -->
+
+<article class="game-card"
+data-name="honkai star rail"
+data-genre="rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🚀</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Honkai: Star Rail</h3>
+
+<div class="genre">RPG</div>
+
+<p>
+Turn-based space-fantasy RPG with a cinematic story.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Honkai+Star+Rail"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 26 -->
+
+<article class="game-card"
+data-name="zenless zone zero"
+data-genre="action rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚡</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Zenless Zone Zero</h3>
+
+<div class="genre">Action RPG</div>
+
+<p>
+Stylish urban action RPG with real-time combat.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Zenless+Zone+Zero"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 27 -->
+
+<article class="game-card"
+data-name="wuthering waves"
+data-genre="action rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🌊</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Wuthering Waves</h3>
+
+<div class="genre">Action RPG</div>
+
+<p>
+Open-world action RPG with fast combat and exploration.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Wuthering+Waves"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 28 -->
+
+<article class="game-card"
+data-name="where winds meet"
+data-genre="open world rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🥷</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Where Winds Meet</h3>
+
+<div class="genre">Open World RPG</div>
+
+<p>
+Open-world martial arts adventure with exploration and combat.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Where+Winds+Meet"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 29 -->
+
+<article class="game-card"
+data-name="asphalt 9 legends"
+data-genre="racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏎️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Asphalt 9: Legends</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+Arcade racing with supercars and spectacular tracks.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Asphalt+9+Legends"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 30 -->
+
+<article class="game-card"
+data-name="asphalt legends unite"
+data-genre="racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏁</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Asphalt Legends Unite</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+Cross-platform arcade racing with online multiplayer.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Asphalt+Legends+Unite"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 31 -->
+
+<article class="game-card"
+data-name="real racing 3"
+data-genre="racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏎️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Real Racing 3</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+Realistic racing with licensed cars and circuits.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Real+Racing+3"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 32 -->
+
+<article class="game-card"
+data-name="need for speed no limits"
+data-genre="racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🚗</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Need for Speed No Limits</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+Street racing, car customization and police chases.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Need+for+Speed+No+Limits"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 33 -->
+
+<article class="game-card"
+data-name="carx street"
+data-genre="racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🚘</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>CarX Street</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+Open-world street racing with detailed driving physics.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=CarX+Street"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 34 -->
+
+<article class="game-card"
+data-name="carx drift racing 2"
+data-genre="racing drift"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">💨</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>CarX Drift Racing 2</h3>
+
+<div class="genre">Racing / Drift</div>
+
+<p>
+Drift-focused racing with tuning and online modes.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=CarX+Drift+Racing+2"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 35 -->
+
+<article class="game-card"
+data-name="car parking multiplayer"
+data-genre="driving"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🚗</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Car Parking Multiplayer</h3>
+
+<div class="genre">Driving</div>
+
+<p>
+Open-world driving, parking and multiplayer activities.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Car+Parking+Multiplayer"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 36 -->
+
+<article class="game-card"
+data-name="car parking multiplayer 2"
+data-genre="driving"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🚙</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Car Parking Multiplayer 2</h3>
+
+<div class="genre">Driving</div>
+
+<p>
+Expanded open-world driving and multiplayer experience.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Car+Parking+Multiplayer+2"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 37 -->
+
+<article class="game-card"
+data-name="hill climb racing"
+data-genre="racing physics"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⛰️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Hill Climb Racing</h3>
+
+<div class="genre">Racing / Physics</div>
+
+<p>
+Drive uphill using physics-based vehicles and tracks.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Hill+Climb+Racing"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 38 -->
+
+<article class="game-card"
+data-name="hill climb racing 2"
+data-genre="racing physics"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏔️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Hill Climb Racing 2</h3>
+
+<div class="genre">Racing / Physics</div>
+
+<p>
+Competitive physics racing with upgrades and events.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Hill+Climb+Racing+2"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 39 -->
+
+<article class="game-card"
+data-name="traffic rider"
+data-genre="racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏍️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Traffic Rider</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+First-person motorcycle racing through traffic.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Traffic+Rider"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 40 -->
+
+<article class="game-card"
+data-name="traffic racer"
+data-genre="racing"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🛣️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Traffic Racer</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+Endless highway racing from a first-person perspective.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Traffic+Racer"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 41 -->
+
+<article class="game-card"
+data-name="angry birds 2"
+data-genre="puzzle arcade"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🐦</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Angry Birds 2</h3>
+
+<div class="genre">Puzzle / Arcade</div>
+
+<p>
+Launch birds to defeat pigs across colorful levels.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Angry+Birds+2"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 42 -->
+
+<article class="game-card"
+data-name="fruit ninja"
+data-genre="arcade"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🍉</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Fruit Ninja</h3>
+
+<div class="genre">Arcade</div>
+
+<p>
+Slice fruit with fast swipes and avoid bombs.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Fruit+Ninja"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 43 -->
+
+<article class="game-card"
+data-name="jetpack joyride"
+data-genre="arcade runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🚀</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Jetpack Joyride</h3>
+
+<div class="genre">Arcade / Runner</div>
+
+<p>
+Fly through a laboratory with jetpacks and gadgets.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Jetpack+Joyride"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 44 -->
+
+<article class="game-card"
+data-name="pou"
+data-genre="casual"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🐱</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Pou</h3>
+
+<div class="genre">Casual</div>
+
+<p>
+Care for a virtual pet and play mini-games.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Pou"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 45 -->
+
+<article class="game-card"
+data-name="geometry dash lite"
+data-genre="rhythm platformer"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🔷</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Geometry Dash Lite</h3>
+
+<div class="genre">Rhythm / Platformer</div>
+
+<p>
+Rhythm-based platforming with challenging levels.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Geometry+Dash+Lite"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 46 -->
+
+<article class="game-card"
+data-name="sonic dash"
+data-genre="endless runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">💨</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Sonic Dash</h3>
+
+<div class="genre">Endless Runner</div>
+
+<p>
+Run through Sonic-themed worlds and collect rings.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Sonic+Dash"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 47 -->
+
+<article class="game-card"
+data-name="talking tom gold run"
+data-genre="endless runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🐱</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Talking Tom Gold Run</h3>
+
+<div class="genre">Endless Runner</div>
+
+<p>
+Run, dodge obstacles and collect gold with Talking Tom.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Talking+Tom+Gold+Run"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 48 -->
+
+<article class="game-card"
+data-name="hungry shark evolution"
+data-genre="action arcade"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🦈</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Hungry Shark Evolution</h3>
+
+<div class="genre">Action / Arcade</div>
+
+<p>
+Control a shark, eat prey and survive in the ocean.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Hungry+Shark+Evolution"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 49 -->
+
+<article class="game-card"
+data-name="zombie tsunami"
+data-genre="arcade runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🧟</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Zombie Tsunami</h3>
+
+<div class="genre">Arcade / Runner</div>
+
+<p>
+Build a zombie horde while running through city streets.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Zombie+Tsunami"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 50 -->
+
+<article class="game-card"
+data-name="plants vs zombies 2"
+data-genre="strategy tower defense"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🌻</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Plants vs. Zombies 2</h3>
+
+<div class="genre">Strategy / Tower Defense</div>
+
+<p>
+Defend your garden against waves of zombies.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Plants+vs+Zombies+2"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 51 -->
+
+<article class="game-card"
+data-name="bloons td 6"
+data-genre="strategy tower defense"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🎈</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Bloons TD 6</h3>
+
+<div class="genre">Tower Defense</div>
+
+<p>
+Deep tower-defense strategy with monkeys and balloons.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Bloons+TD+6&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 52 -->
+
+<article class="game-card"
+data-name="kingdom rush"
+data-genre="strategy tower defense"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🏰</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Kingdom Rush</h3>
+
+<div class="genre">Tower Defense</div>
+
+<p>
+Classic fantasy tower defense with heroes and upgrades.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Kingdom+Rush&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 53 -->
+
+<article class="game-card"
+data-name="terraria"
+data-genre="sandbox adventure"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">⛏️</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Terraria</h3>
+
+<div class="genre">Sandbox / Adventure</div>
+
+<p>
+Explore, build, craft and fight in a 2D sandbox world.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Terraria&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 54 -->
+
+<article class="game-card"
+data-name="minecraft"
+data-genre="sandbox"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🧱</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Minecraft</h3>
+
+<div class="genre">Sandbox</div>
+
+<p>
+Build, explore and survive in an iconic block world.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Minecraft&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 55 -->
+
+<article class="game-card"
+data-name="stardew valley"
+data-genre="simulation rpg"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🌾</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Stardew Valley</h3>
+
+<div class="genre">Simulation / RPG</div>
+
+<p>
+Build a farm, explore caves and develop relationships.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Stardew+Valley&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 56 -->
+
+<article class="game-card"
+data-name="dead cells"
+data-genre="action roguelike"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🗡️</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Dead Cells</h3>
+
+<div class="genre">Action / Roguelike</div>
+
+<p>
+Fast roguelike action with challenging combat.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Dead+Cells&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 57 -->
+
+<article class="game-card"
+data-name="grid autosport"
+data-genre="racing"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🏁</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>GRID Autosport</h3>
+
+<div class="genre">Racing</div>
+
+<p>
+Console-quality racing with realistic driving.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=GRID+Autosport&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 58 -->
+
+<article class="game-card"
+data-name="grand theft auto iii"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🚓</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Grand Theft Auto III</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Classic open-world crime adventure from Rockstar Games.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/apps/details?id=com.rockstar.gta3"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 59 -->
+
+<article class="game-card"
+data-name="grand theft auto vice city"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🌴</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Grand Theft Auto: Vice City</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Explore Vice City in the classic open-world crime adventure.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/apps/details?id=com.rockstargames.gtavc"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 60 -->
+
+<article class="game-card"
+data-name="grand theft auto san andreas"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🌆</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Grand Theft Auto: San Andreas</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Explore Los Santos and the San Andreas storyline.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/apps/details?id=com.rockstargames.gtasa"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 61 -->
+
+<article class="game-card"
+data-name="gta liberty city stories"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🏙️</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>GTA: Liberty City Stories</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Portable Liberty City adventure from Rockstar Games.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Rockstar</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://www.rockstargames.com/"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 62 -->
+
+<article class="game-card"
+data-name="gta chinatown wars"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🏙️</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>GTA: Chinatown Wars</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Top-down GTA adventure built for mobile.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Rockstar</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://www.rockstargames.com/"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 63 -->
+
+<article class="game-card"
+data-name="gta iii definitive edition"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🚓</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>GTA III – Definitive Edition</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Remastered GTA III experience for modern mobile devices.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Rockstar</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://www.rockstargames.com/"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 64 -->
+
+<article class="game-card"
+data-name="gta vice city definitive edition"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🌴</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>GTA: Vice City – Definitive Edition</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Definitive Edition of the classic Vice City adventure.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Rockstar</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://www.rockstargames.com/"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 65 -->
+
+<article class="game-card"
+data-name="gta san andreas definitive edition"
+data-genre="action open world"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🌆</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>GTA: San Andreas – Definitive Edition</h3>
+
+<div class="genre">Action / Open World</div>
+
+<p>
+Definitive Edition of the San Andreas classic.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Rockstar</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://www.rockstargames.com/"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 66 -->
+
+<article class="game-card"
+data-name="bully anniversary edition"
+data-genre="action adventure"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🏫</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Bully: Anniversary Edition</h3>
+
+<div class="genre">Action / Adventure</div>
+
+<p>
+Attend Bullworth Academy in Rockstar's school-life adventure.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Bully+Anniversary+Edition&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 67 -->
+
+<article class="game-card"
+data-name="the room"
+data-genre="puzzle mystery"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🔐</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>The Room</h3>
+
+<div class="genre">Puzzle / Mystery</div>
+
+<p>
+Atmospheric 3D puzzle mystery inside a mysterious room.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=The+Room&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 68 -->
+
+<article class="game-card"
+data-name="the room two"
+data-genre="puzzle mystery"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🧩</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>The Room Two</h3>
+
+<div class="genre">Puzzle / Mystery</div>
+
+<p>
+Continue the tactile puzzle mystery with new mechanisms.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=The+Room+Two&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 69 -->
+
+<article class="game-card"
+data-name="the room three"
+data-genre="puzzle mystery"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🗝️</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>The Room Three</h3>
+
+<div class="genre">Puzzle / Mystery</div>
+
+<p>
+Solve intricate mechanical puzzles in an atmospheric world.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=The+Room+Three&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 70 -->
+
+<article class="game-card"
+data-name="monument valley"
+data-genre="puzzle"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🏛️</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Monument Valley</h3>
+
+<div class="genre">Puzzle</div>
+
+<p>
+Guide a silent princess through impossible architecture.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Monument+Valley&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 71 -->
+
+<article class="game-card"
+data-name="monument valley 2"
+data-genre="puzzle"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🏛️</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Monument Valley 2</h3>
+
+<div class="genre">Puzzle</div>
+
+<p>
+Explore optical-illusion architecture in a beautiful sequel.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Monument+Valley+2&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 72 -->
+
+<article class="game-card"
+data-name="limbo"
+data-genre="puzzle platformer"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🖤</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Limbo</h3>
+
+<div class="genre">Puzzle / Platformer</div>
+
+<p>
+Dark atmospheric platformer with physics-based puzzles.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Limbo&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 73 -->
+
+<article class="game-card"
+data-name="inside"
+data-genre="adventure platformer"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🌑</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Inside</h3>
+
+<div class="genre">Adventure / Platformer</div>
+
+<p>
+Cinematic puzzle-platform adventure with a dark atmosphere.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Inside&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 74 -->
+
+<article class="game-card"
+data-name="leo fortune"
+data-genre="platformer"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🦁</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Leo's Fortune</h3>
+
+<div class="genre">Platformer</div>
+
+<p>
+Colorful physics platformer about a golden-haired creature.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Leo%27s+Fortune&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 75 -->
+
+<article class="game-card"
+data-name="altos adventure"
+data-genre="endless runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏂</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Alto's Adventure</h3>
+
+<div class="genre">Endless Runner</div>
+
+<p>
+Snowboarding adventure through beautiful mountain landscapes.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Alto%27s+Adventure"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 76 -->
+
+<article class="game-card"
+data-name="altos odyssey"
+data-genre="endless runner"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🏜️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Alto's Odyssey</h3>
+
+<div class="genre">Endless Runner</div>
+
+<p>
+Sandboarding journey across deserts and changing landscapes.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Alto%27s+Odyssey"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 77 -->
+
+<article class="game-card"
+data-name="crossy road"
+data-genre="arcade"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🐔</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Crossy Road</h3>
+
+<div class="genre">Arcade</div>
+
+<p>
+Cross roads and rivers while avoiding hazards.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Crossy+Road"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 78 -->
+
+<article class="game-card"
+data-name="hungry shark world"
+data-genre="action arcade"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🦈</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Hungry Shark World</h3>
+
+<div class="genre">Action / Arcade</div>
+
+<p>
+Take control of sharks and explore huge ocean environments.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Hungry+Shark+World"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 79 -->
+
+<article class="game-card"
+data-name="world of tanks blitz"
+data-genre="action tank"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🪖</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>World of Tanks Blitz</h3>
+
+<div class="genre">Action / Tank</div>
+
+<p>
+Competitive tank battles with online teams.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=World+of+Tanks+Blitz"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 80 -->
+
+<article class="game-card"
+data-name="war robots"
+data-genre="action shooter"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🤖</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>War Robots</h3>
+
+<div class="genre">Action / Shooter</div>
+
+<p>
+Team-based battles featuring customizable combat robots.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=War+Robots"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 81 -->
+
+<article class="game-card"
+data-name="shadow fight 4 arena"
+data-genre="fighting"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🥷</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Shadow Fight 4: Arena</h3>
+
+<div class="genre">Fighting</div>
+
+<p>
+Competitive real-time fighting with heroes and weapons.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Shadow+Fight+4+Arena"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 82 -->
+
+<article class="game-card"
+data-name="shadow fight 3"
+data-genre="fighting rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚔️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Shadow Fight 3</h3>
+
+<div class="genre">Fighting / RPG</div>
+
+<p>
+Story-driven fighting RPG with deep character progression.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Shadow+Fight+3"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 83 -->
+
+<article class="game-card"
+data-name="mortal kombat mobile"
+data-genre="fighting"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">👹</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Mortal Kombat Mobile</h3>
+
+<div class="genre">Fighting</div>
+
+<p>
+Collect iconic fighters and battle in mobile matches.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Mortal+Kombat+Mobile"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 84 -->
+
+<article class="game-card"
+data-name="injustice 2"
+data-genre="fighting"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🦸</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Injustice 2</h3>
+
+<div class="genre">Fighting</div>
+
+<p>
+DC superheroes and villains clash in mobile battles.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Injustice+2"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 85 -->
+
+<article class="game-card"
+data-name="marvel contest of champions"
+data-genre="fighting"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🦸</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Marvel Contest of Champions</h3>
+
+<div class="genre">Fighting</div>
+
+<p>
+Marvel heroes and villains battle in one-on-one fights.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Marvel+Contest+of+Champions"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 86 -->
+
+<article class="game-card"
+data-name="the battle cats"
+data-genre="strategy tower defense"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🐱</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>The Battle Cats</h3>
+
+<div class="genre">Strategy / Tower Defense</div>
+
+<p>
+Deploy quirky cats in a humorous tower-defense game.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=The+Battle+Cats"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 87 -->
+
+<article class="game-card"
+data-name="summoners war"
+data-genre="rpg strategy"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🐉</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Summoners War</h3>
+
+<div class="genre">RPG / Strategy</div>
+
+<p>
+Collect monsters and build teams for strategic battles.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Summoners+War"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 88 -->
+
+<article class="game-card"
+data-name="afk arena"
+data-genre="rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🛡️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>AFK Arena</h3>
+
+<div class="genre">RPG</div>
+
+<p>
+Collect heroes and progress through strategic fantasy battles.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=AFK+Arena"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 89 -->
+
+<article class="game-card"
+data-name="raid shadow legends"
+data-genre="rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚔️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>RAID: Shadow Legends</h3>
+
+<div class="genre">RPG</div>
+
+<p>
+Collect champions and fight through a dark fantasy campaign.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=RAID+Shadow+Legends"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 90 -->
+
+<article class="game-card"
+data-name="diablo immortal"
+data-genre="action rpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">👹</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Diablo Immortal</h3>
+
+<div class="genre">Action RPG</div>
+
+<p>
+Explore Sanctuary and battle demons in an online RPG.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Diablo+Immortal"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 91 -->
+
+<article class="game-card"
+data-name="albion online"
+data-genre="mmorpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🛡️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Albion Online</h3>
+
+<div class="genre">MMORPG</div>
+
+<p>
+Sandbox MMORPG with player-driven economy and combat.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Albion+Online"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 92 -->
+
+<article class="game-card"
+data-name="old school runescape"
+data-genre="mmorpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚔️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Old School RuneScape</h3>
+
+<div class="genre">MMORPG</div>
+
+<p>
+Classic MMORPG with quests, skills and a huge world.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Old+School+RuneScape"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 93 -->
+
+<article class="game-card"
+data-name="black desert mobile"
+data-genre="mmorpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🐉</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Black Desert Mobile</h3>
+
+<div class="genre">MMORPG</div>
+
+<p>
+Large-scale fantasy MMORPG with detailed combat.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Black+Desert+Mobile"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 94 -->
+
+<article class="game-card"
+data-name="toram online"
+data-genre="mmorpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">⚔️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Toram Online</h3>
+
+<div class="genre">MMORPG</div>
+
+<p>
+Anime-style MMORPG with deep character customization.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Toram+Online"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 95 -->
+
+<article class="game-card"
+data-name="sky children of the light"
+data-genre="adventure social"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">☁️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Sky: Children of the Light</h3>
+
+<div class="genre">Adventure / Social</div>
+
+<p>
+Explore a peaceful social adventure world with other players.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Sky+Children+of+the+Light"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 96 -->
+
+<article class="game-card"
+data-name="lifeafter"
+data-genre="survival mmorpg"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">☣️</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>LifeAfter</h3>
+
+<div class="genre">Survival / MMORPG</div>
+
+<p>
+Survive a post-apocalyptic world and build a shelter.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=LifeAfter"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 97 -->
+
+<article class="game-card"
+data-name="last day on earth survival"
+data-genre="survival"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🧟</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>Last Day on Earth: Survival</h3>
+
+<div class="genre">Survival</div>
+
+<p>
+Gather resources, craft equipment and survive a zombie world.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=Last+Day+on+Earth+Survival"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 98 -->
+
+<article class="game-card"
+data-name="ark ultimate mobile edition"
+data-genre="survival adventure"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🦖</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>ARK: Ultimate Mobile Edition</h3>
+
+<div class="genre">Survival / Adventure</div>
+
+<p>
+Tame dinosaurs, build bases and survive on a dangerous island.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free to play</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=ARK+Ultimate+Mobile+Edition"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
+
+<!-- 99 -->
+
+<article class="game-card"
+data-name="dont starve pocket edition"
+data-genre="survival"
+data-status="paid">
+
+<div class="game-top">
+<div class="game-icon">🔥</div>
+<span class="status paid">Paid</span>
+</div>
+
+<h3>Don't Starve: Pocket Edition</h3>
+
+<div class="genre">Survival</div>
+
+<p>
+Survive a strange wilderness through crafting and exploration.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>Google Play</span>
+<span><b>Access</b>Paid title</span>
+</div>
+
+<a class="game-button"
+href="https://play.google.com/store/search?q=Don%27t+Starve+Pocket+Edition&c=apps"
+target="_blank"
+rel="noopener noreferrer">
+View Official Source ↗
+</a>
+
+</article>
+
+<!-- 100 -->
+
+<article class="game-card"
+data-name="worldbox"
+data-genre="sandbox simulation"
+data-status="free">
+
+<div class="game-top">
+<div class="game-icon">🌍</div>
+<span class="status free">Free</span>
+</div>
+
+<h3>WorldBox</h3>
+
+<div class="genre">Sandbox / Simulation</div>
+
+<p>
+Create worlds, civilizations and disasters in a sandbox.
+</p>
+
+<div class="game-meta">
+<span><b>Source</b>APKPure</span>
+<span><b>Access</b>Free</span>
+</div>
+
+<a class="game-button"
+href="https://apkpure.net/search?q=WorldBox"
+target="_blank"
+rel="noopener noreferrer">
+Download / View ↗
+</a>
+
+</article>
 
 </div>
 
-
+<div class="empty" id="emptyState">
+No games match your search. Try another keyword or filter.
 </div>
 
 </section>
-
 
 <!-- APPS -->
 
@@ -598,9 +4163,13 @@ Explore Game
 
 <div class="section-header">
 
-<small>📱 MOBILE APPS</small>
+<small>
+📱 MOBILE APPS
+</small>
 
-<h2>App Rewards</h2>
+<h2>
+App Rewards
+</h2>
 
 <p>
 Discover applications and future partner opportunities.
@@ -608,9 +4177,7 @@ Discover applications and future partner opportunities.
 
 </div>
 
-
 <div class="apps-grid">
-
 
 <div class="app-card">
 
@@ -636,7 +4203,6 @@ Coming Soon
 
 </div>
 
-
 <div class="app-card">
 
 <div class="app-icon">
@@ -661,7 +4227,6 @@ Coming Soon
 
 </div>
 
-
 <div class="app-card">
 
 <div class="app-icon">
@@ -675,8 +4240,7 @@ App Challenges
 </h3>
 
 <p>
-Future opportunities may include completing
-specific app activities.
+Future opportunities may include completing specific app activities.
 </p>
 
 <span class="app-status">
@@ -686,7 +4250,6 @@ Coming Soon
 </div>
 
 </div>
-
 
 <div class="app-card">
 
@@ -712,11 +4275,9 @@ Coming Soon
 
 </div>
 
-
 </div>
 
 </section>
-
 
 <!-- OFFERS -->
 
@@ -724,9 +4285,13 @@ Coming Soon
 
 <div class="section-header">
 
-<small>🎁 OPPORTUNITIES</small>
+<small>
+🎁 OPPORTUNITIES
+</small>
 
-<h2>Game Offers</h2>
+<h2>
+Game Offers
+</h2>
 
 <p>
 Selected gaming opportunities and partner offers.
@@ -734,9 +4299,7 @@ Selected gaming opportunities and partner offers.
 
 </div>
 
-
 <div class="offers-grid">
-
 
 <div class="offer-card">
 
@@ -753,8 +4316,7 @@ Play & Explore
 </h3>
 
 <p>
-Discover future gaming offers and promotional
-opportunities.
+Discover future gaming offers and promotional opportunities.
 </p>
 
 <a href="#" class="offer-button">
@@ -762,7 +4324,6 @@ View Offer
 </a>
 
 </div>
-
 
 <div class="offer-card">
 
@@ -779,8 +4340,7 @@ Complete Challenges
 </h3>
 
 <p>
-Some future partner offers may include
-specific gameplay objectives.
+Some future partner offers may include specific gameplay objectives.
 </p>
 
 <a href="#" class="offer-button">
@@ -788,7 +4348,6 @@ View Offer
 </a>
 
 </div>
-
 
 <div class="offer-card">
 
@@ -805,8 +4364,7 @@ Featured Opportunities
 </h3>
 
 <p>
-A dedicated area for selected reward opportunities
-will be added here.
+A dedicated area for selected reward opportunities will be added here.
 </p>
 
 <a href="#" class="offer-button">
@@ -815,13 +4373,11 @@ View Offer
 
 </div>
 
-
 </div>
 
 </section>
 
-
-<!-- HOW IT WORKS -->
+<!-- INFO -->
 
 <section class="info">
 
@@ -830,30 +4386,92 @@ How SpeedTools Rewards Work
 </h2>
 
 <p>
-When partner opportunities become available, each offer
-will clearly explain what is required before you participate.
+When partner opportunities become available, each offer will clearly explain
+what is required before you participate.
 </p>
 
 <div class="notice">
 
 <strong>Important:</strong>
-Availability, eligibility and rewards may vary depending
-on your country, device and the individual partner.
-SpeedTools does not guarantee a specific reward or income.
+
+Game availability, pricing, eligibility and external-source availability
+can change. SpeedTools does not host or redistribute APK files and does
+not guarantee an external download in every country. Always review the
+external source before installing an app.
 
 </div>
 
 </section>
 
-
 </main>
-
 
 <footer>
 
 © 2026 SpeedTools. All rights reserved.
 
 </footer>
+
+<script>
+
+const search = document.getElementById("gameSearch");
+
+const genre = document.getElementById("genreFilter");
+
+const status = document.getElementById("statusFilter");
+
+const cards = [...document.querySelectorAll(".game-card")];
+
+const count = document.getElementById("resultsCount");
+
+const empty = document.getElementById("emptyState");
+
+
+function filterGames(){
+
+    const q = search.value.toLowerCase().trim();
+
+    const g = genre.value.toLowerCase();
+
+    const s = status.value.toLowerCase();
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const show =
+            (!q ||
+             card.dataset.name.includes(q) ||
+             card.dataset.genre.includes(q))
+            &&
+            (g === "all" ||
+             card.dataset.genre.includes(g))
+            &&
+            (s === "all" ||
+             card.dataset.status === s);
+
+        card.classList.toggle("hidden", !show);
+
+        if(show){
+            visible++;
+        }
+
+    });
+
+    count.textContent =
+        "Showing " + visible + " of " + cards.length + " games";
+
+    empty.style.display =
+        visible ? "none" : "block";
+}
+
+
+search.addEventListener("input", filterGames);
+
+genre.addEventListener("change", filterGames);
+
+status.addEventListener("change", filterGames);
+
+</script>
 
 </body>
 </html>
