@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +110,7 @@ header{
   border-radius:18px;
   padding:14px;
   box-shadow:0 8px 25px rgba(0,0,0,.06);
-  margin-bottom:35px;
+  margin-bottom:25px;
 }
 
 .toolbar input{
@@ -122,6 +121,38 @@ header{
   background:#fff;
   font:inherit;
   outline:none;
+}
+
+/* Categories */
+
+.categories{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:35px;
+}
+
+.category{
+  padding:9px 16px;
+  border:1px solid #dfe3ea;
+  background:#fff;
+  color:#667085;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.category:hover{
+  border-color:#6366f1;
+  color:#6366f1;
+}
+
+.category.active{
+  background:#6366f1;
+  border-color:#6366f1;
+  color:#fff;
 }
 
 .section-title{
@@ -296,9 +327,41 @@ footer{
   </div>
 
 
-  <h2 class="section-title">
-    📱 TikTok Tools
+  <!-- Categories -->
+
+  <div class="categories">
+
+    <div class="category active" data-category="all">
+      All
+    </div>
+
+    <div class="category" data-category="tiktok">
+      TikTok
+    </div>
+
+    <div class="category" data-category="instagram">
+      Instagram
+    </div>
+
+    <div class="category" data-category="youtube">
+      YouTube
+    </div>
+
+    <div class="category" data-category="writing">
+      Writing
+    </div>
+
+    <div class="category" data-category="creator">
+      Creator Tools
+    </div>
+
+  </div>
+
+
+  <h2 class="section-title" id="sectionTitle">
+    🛠️ All Tools
   </h2>
+
 
   <section class="tools-grid" id="toolsGrid">
 
@@ -306,7 +369,8 @@ footer{
     <!-- TikTok Caption Generator -->
 
     <article class="tool-card"
-      data-name="tiktok caption generator">
+      data-name="tiktok caption generator"
+      data-category="tiktok">
 
       <div class="tool-icon">✍️</div>
 
@@ -334,7 +398,8 @@ footer{
     <!-- TikTok Engagement Calculator -->
 
     <article class="tool-card"
-      data-name="tiktok engagement calculator">
+      data-name="tiktok engagement calculator"
+      data-category="tiktok">
 
       <div class="tool-icon">📊</div>
 
@@ -362,7 +427,8 @@ footer{
     <!-- TikTok Hashtag Generator -->
 
     <article class="tool-card"
-      data-name="tiktok hashtag generator">
+      data-name="tiktok hashtag generator"
+      data-category="tiktok">
 
       <div class="tool-icon">#️⃣</div>
 
@@ -385,10 +451,13 @@ footer{
       </a>
 
     </article>
-        <!-- Word Counter -->
+
+
+    <!-- Word Counter -->
 
     <article class="tool-card"
-      data-name="word counter writing">
+      data-name="word counter"
+      data-category="writing">
 
       <div class="tool-icon">📝</div>
 
@@ -441,9 +510,14 @@ footer{
 
 const search = document.getElementById("search");
 const cards = [...document.querySelectorAll(".tool-card")];
+const categories = [...document.querySelectorAll(".category")];
 const noResults = document.getElementById("noResults");
+const sectionTitle = document.getElementById("sectionTitle");
 
-function searchTools(){
+let activeCategory = "all";
+
+
+function filterTools(){
 
   const query = search.value
     .toLowerCase()
@@ -456,8 +530,18 @@ function searchTools(){
     const name =
       card.dataset.name.toLowerCase();
 
-    const show =
+    const category =
+      card.dataset.category.toLowerCase();
+
+    const matchesSearch =
       name.includes(query);
+
+    const matchesCategory =
+      activeCategory === "all" ||
+      category === activeCategory;
+
+    const show =
+      matchesSearch && matchesCategory;
 
     card.style.display =
       show ? "flex" : "none";
@@ -470,12 +554,47 @@ function searchTools(){
 
   noResults.style.display =
     visible === 0 ? "block" : "none";
+
 }
+
+
+categories.forEach(category => {
+
+  category.addEventListener("click", () => {
+
+    categories.forEach(item => {
+      item.classList.remove("active");
+    });
+
+    category.classList.add("active");
+
+    activeCategory =
+      category.dataset.category;
+
+    const categoryName =
+      category.textContent.trim();
+
+    if(activeCategory === "all"){
+      sectionTitle.textContent = "🛠️ All Tools";
+    }else{
+      sectionTitle.textContent =
+        "🛠️ " + categoryName + " Tools";
+    }
+
+    filterTools();
+
+  });
+
+});
+
 
 search.addEventListener(
   "input",
-  searchTools
+  filterTools
 );
+
+
+filterTools();
 
 </script>
 
