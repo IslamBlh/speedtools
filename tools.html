@@ -1,1 +1,457 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Online Tools - SpeedTools</title>
+
+<meta name="description"
+content="Free online tools for TikTok, social media, content creators and everyday tasks.">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+  line-height:1.55;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#fff;
+  border-bottom:1px solid #e6eaf0;
+}
+
+.nav{
+  max-width:1180px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  text-decoration:none;
+  color:#111827;
+  font-size:23px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#6366f1;
+}
+
+.back{
+  text-decoration:none;
+  color:#667085;
+  font-weight:800;
+}
+
+.hero{
+  text-align:center;
+  padding:65px 20px 75px;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+
+.badge{
+  display:inline-block;
+  background:#e0e7ff;
+  color:#4f46e5;
+  padding:7px 13px;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.hero h1{
+  font-size:clamp(40px,7vw,64px);
+  line-height:1.05;
+  margin-bottom:16px;
+}
+
+.hero h1 span{
+  color:#6366f1;
+}
+
+.hero p{
+  max-width:720px;
+  margin:auto;
+  color:#667085;
+  font-size:18px;
+}
+
+.container{
+  max-width:1180px;
+  margin:auto;
+  padding:45px 20px 70px;
+}
+
+.toolbar{
+  position:sticky;
+  top:66px;
+  z-index:10;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+  margin-bottom:35px;
+}
+
+.toolbar input{
+  width:100%;
+  padding:14px;
+  border:1px solid #d9dee8;
+  border-radius:11px;
+  background:#fff;
+  font:inherit;
+  outline:none;
+}
+
+.section-title{
+  font-size:24px;
+  margin:35px 0 18px;
+}
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.tool-card{
+  background:#fff;
+  border:1px solid #e4e8ef;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 5px 18px rgba(20,30,50,.05);
+  transition:.2s;
+  display:flex;
+  flex-direction:column;
+}
+
+.tool-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(20,30,50,.10);
+}
+
+.tool-icon{
+  width:55px;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eef2ff;
+  border-radius:15px;
+  font-size:28px;
+  margin-bottom:16px;
+}
+
+.tool-category{
+  font-size:10px;
+  color:#6366f1;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:7px;
+}
+
+.tool-card h3{
+  font-size:19px;
+  margin-bottom:8px;
+}
+
+.tool-card p{
+  color:#667085;
+  font-size:13px;
+  min-height:60px;
+  margin-bottom:18px;
+}
+
+.open-tool{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  background:#6366f1;
+  color:#fff;
+  border-radius:10px;
+  padding:11px;
+  font-size:13px;
+  font-weight:900;
+  margin-top:auto;
+}
+
+.open-tool:hover{
+  background:#4f46e5;
+}
+
+.no-results{
+  display:none;
+  text-align:center;
+  padding:35px;
+  color:#667085;
+}
+
+.note{
+  margin-top:35px;
+  padding:18px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  color:#667085;
+  font-size:13px;
+}
+
+footer{
+  border-top:1px solid #e6eaf0;
+  padding:30px 20px;
+  text-align:center;
+  color:#8a94a6;
+  font-size:12px;
+}
+
+@media(max-width:900px){
+  .tools-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .tools-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:50px 20px 60px;
+  }
+
+  .nav{
+    padding:14px 16px;
+  }
+
+  .back{
+    font-size:13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <a class="logo" href="index.html">
+      ⚡ Speed<span>Tools</span>
+    </a>
+
+    <a class="back" href="index.html">
+      ← Back to Home
+    </a>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="badge">🛠️ TOOLS HUB</div>
+
+  <h1>Free <span>Tools.</span></h1>
+
+  <p>
+    Free online tools for TikTok, social media, content creators
+    and everyday digital tasks.
+  </p>
+
+</section>
+
+
+<main class="container">
+
+  <div class="toolbar">
+
+    <input
+      type="search"
+      id="search"
+      placeholder="Search tools..."
+      autocomplete="off"
+    >
+
+  </div>
+
+
+  <h2 class="section-title">
+    📱 TikTok Tools
+  </h2>
+
+  <section class="tools-grid" id="toolsGrid">
+
+
+    <!-- TikTok Caption Generator -->
+
+    <article class="tool-card"
+      data-name="tiktok caption generator">
+
+      <div class="tool-icon">✍️</div>
+
+      <div class="tool-category">
+        TikTok
+      </div>
+
+      <h3>
+        TikTok Caption Generator
+      </h3>
+
+      <p>
+        Generate engaging TikTok captions for your videos quickly.
+      </p>
+
+      <a
+        class="open-tool"
+        href="tiktok-caption-generator.html">
+        Open Tool →
+      </a>
+
+    </article>
+
+
+    <!-- TikTok Engagement Calculator -->
+
+    <article class="tool-card"
+      data-name="tiktok engagement calculator">
+
+      <div class="tool-icon">📊</div>
+
+      <div class="tool-category">
+        TikTok
+      </div>
+
+      <h3>
+        TikTok Engagement Calculator
+      </h3>
+
+      <p>
+        Calculate your TikTok engagement rate using your video statistics.
+      </p>
+
+      <a
+        class="open-tool"
+        href="tiktok-engagement-calculator.html">
+        Open Tool →
+      </a>
+
+    </article>
+
+
+    <!-- TikTok Hashtag Generator -->
+
+    <article class="tool-card"
+      data-name="tiktok hashtag generator">
+
+      <div class="tool-icon">#️⃣</div>
+
+      <div class="tool-category">
+        TikTok
+      </div>
+
+      <h3>
+        TikTok Hashtag Generator
+      </h3>
+
+      <p>
+        Generate relevant hashtag ideas for your TikTok content.
+      </p>
+
+      <a
+        class="open-tool"
+        href="tiktok-hashtag-generator.html">
+        Open Tool →
+      </a>
+
+    </article>
+
+
+  </section>
+
+
+  <div class="no-results" id="noResults">
+    No tools found.
+  </div>
+
+
+  <div class="note">
+
+    <strong>SpeedTools:</strong>
+    All tools are provided for informational and practical use.
+    More free tools will be added regularly.
+
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 SpeedTools. All rights reserved.
+</footer>
+
+
+<script>
+
+const search = document.getElementById("search");
+const cards = [...document.querySelectorAll(".tool-card")];
+const noResults = document.getElementById("noResults");
+
+function searchTools(){
+
+  const query = search.value
+    .toLowerCase()
+    .trim();
+
+  let visible = 0;
+
+  cards.forEach(card => {
+
+    const name =
+      card.dataset.name.toLowerCase();
+
+    const show =
+      name.includes(query);
+
+    card.style.display =
+      show ? "flex" : "none";
+
+    if(show){
+      visible++;
+    }
+
+  });
+
+  noResults.style.display =
+    visible === 0 ? "block" : "none";
+}
+
+search.addEventListener(
+  "input",
+  searchTools
+);
+
+</script>
+
+</body>
+</html>
