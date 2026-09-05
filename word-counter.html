@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word Counter - Free Online Word & Character Counter | SpeedTools</title>
+
+<meta name="description"
+content="Free online word counter. Count words, characters, sentences and paragraphs instantly. Fast, simple and accurate.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f7f8fc;
+    color:#222;
+}
+
+header{
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.nav{
+    max-width:1100px;
+    margin:auto;
+    padding:18px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    text-decoration:none;
+    font-size:24px;
+    font-weight:800;
+    color:#111;
+}
+
+.logo span{
+    color:#6c5ce7;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#444;
+    font-weight:600;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#666;
+    font-size:18px;
+}
+
+.tool-box{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+textarea{
+    width:100%;
+    min-height:350px;
+    resize:vertical;
+    border:1px solid #dcdfe6;
+    border-radius:12px;
+    padding:18px;
+    font-size:16px;
+    line-height:1.6;
+    outline:none;
+}
+
+textarea:focus{
+    border-color:#6c5ce7;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.stat{
+    background:#f7f8fc;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+    margin-bottom:6px;
+}
+
+.stat span{
+    color:#666;
+    font-size:14px;
+}
+
+.clear{
+    margin-top:20px;
+    padding:12px 22px;
+    border:0;
+    border-radius:8px;
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.clear:hover{
+    opacity:.9;
+}
+
+.back{
+    display:inline-block;
+    margin-top:25px;
+    color:#6c5ce7;
+    text-decoration:none;
+    font-weight:600;
+}
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#777;
+    border-top:1px solid #e5e7eb;
+    margin-top:30px;
+}
+
+@media(max-width:700px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<a class="logo" href="index.html">
+⚡ Speed<span>Tools</span>
+</a>
+
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="index.html#gaming">Gaming</a>
+<a href="index.html#about">About</a>
+</div>
+
+</div>
+
+</header>
+
+<main class="container">
+
+<section class="hero">
+
+<h1>Word Counter</h1>
+
+<p>
+Count words, characters, sentences and paragraphs instantly.
+</p>
+
+</section>
+
+<section class="tool-box">
+
+<textarea
+id="text"
+placeholder="Start typing or paste your text here..."
+></textarea>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="words">0</strong>
+<span>Words</span>
+</div>
+
+<div class="stat">
+<strong id="characters">0</strong>
+<span>Characters</span>
+</div>
+
+<div class="stat">
+<strong id="sentences">0</strong>
+<span>Sentences</span>
+</div>
+
+<div class="stat">
+<strong id="paragraphs">0</strong>
+<span>Paragraphs</span>
+</div>
+
+</div>
+
+<button class="clear" onclick="clearText()">
+Clear Text
+</button>
+
+</section>
+
+<a class="back" href="tools.html">
+← Back to Tools
+</a>
+
+</main>
+
+<footer>
+
+© 2026 SpeedTools. All rights reserved.
+
+</footer>
+
+<script>
+
+const text = document.getElementById("text");
+
+text.addEventListener("input", countText);
+
+function countText(){
+
+    const value = text.value;
+
+    const words = value.trim()
+        ? value.trim().split(/\s+/).length
+        : 0;
+
+    const characters = value.length;
+
+    const sentences = value.trim()
+        ? value.split(/[.!?]+/)
+            .filter(sentence => sentence.trim().length > 0)
+            .length
+        : 0;
+
+    const paragraphs = value.trim()
+        ? value.split(/\n+/)
+            .filter(paragraph => paragraph.trim().length > 0)
+            .length
+        : 0;
+
+    document.getElementById("words").textContent = words;
+    document.getElementById("characters").textContent = characters;
+    document.getElementById("sentences").textContent = sentences;
+    document.getElementById("paragraphs").textContent = paragraphs;
+
+}
+
+function clearText(){
+
+    text.value = "";
+
+    countText();
+
+}
+
+</script>
+
+</body>
+  </html>
