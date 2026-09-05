@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Instagram Engagement Calculator - SpeedTools</title>
+
+<meta name="description"
+content="Free Instagram Engagement Calculator. Calculate your Instagram engagement rate from likes, comments and followers.">
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+  line-height:1.55;
+}
+
+header{
+  background:#fff;
+  border-bottom:1px solid #e6eaf0;
+}
+
+.nav{
+  max-width:1000px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  text-decoration:none;
+  color:#111827;
+  font-size:23px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#6366f1;
+}
+
+.back{
+  text-decoration:none;
+  color:#667085;
+  font-weight:800;
+  font-size:14px;
+}
+
+.hero{
+  text-align:center;
+  padding:55px 20px 45px;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+
+.badge{
+  display:inline-block;
+  background:#e0e7ff;
+  color:#4f46e5;
+  padding:7px 13px;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.hero h1{
+  font-size:clamp(32px,6vw,52px);
+  line-height:1.1;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:#6366f1;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:#667085;
+  font-size:16px;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:40px 20px 70px;
+}
+
+.calculator{
+  background:#fff;
+  border:1px solid #e4e8ef;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 8px 25px rgba(20,30,50,.06);
+}
+
+.field{
+  margin-bottom:18px;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.field input{
+  width:100%;
+  padding:13px;
+  border:1px solid #d9dee8;
+  border-radius:10px;
+  font:inherit;
+  outline:none;
+}
+
+.field input:focus{
+  border-color:#6366f1;
+}
+
+button{
+  width:100%;
+  border:none;
+  background:#6366f1;
+  color:#fff;
+  padding:13px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#4f46e5;
+}
+
+.result{
+  display:none;
+  margin-top:22px;
+  padding:25px;
+  background:#f8f9ff;
+  border:1px solid #e0e7ff;
+  border-radius:15px;
+  text-align:center;
+}
+
+.result-title{
+  color:#667085;
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.rate{
+  font-size:42px;
+  font-weight:900;
+  color:#6366f1;
+}
+
+.message{
+  margin-top:8px;
+  color:#667085;
+  font-size:13px;
+}
+
+.info{
+  margin-top:25px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:20px;
+}
+
+.info h2{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.info p{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+footer{
+  border-top:1px solid #e6eaf0;
+  padding:30px 20px;
+  text-align:center;
+  color:#8a94a6;
+  font-size:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="nav">
+
+    <a class="logo" href="index.html">
+      ⚡ Speed<span>Tools</span>
+    </a>
+
+    <a class="back" href="tools.html">
+      ← All Tools
+    </a>
+
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="badge">
+    📊 INSTAGRAM TOOL
+  </div>
+
+  <h1>
+    Instagram <span>Engagement Calculator</span>
+  </h1>
+
+  <p>
+    Calculate your Instagram engagement rate quickly using your likes,
+    comments and follower count.
+  </p>
+
+</section>
+
+
+<main class="container">
+
+
+  <div class="calculator">
+
+
+    <div class="field">
+
+      <label for="followers">
+        Instagram Followers
+      </label>
+
+      <input
+        type="number"
+        id="followers"
+        placeholder="Example: 10000"
+        min="1"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="likes">
+        Likes
+      </label>
+
+      <input
+        type="number"
+        id="likes"
+        placeholder="Example: 500"
+        min="0"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="comments">
+        Comments
+      </label>
+
+      <input
+        type="number"
+        id="comments"
+        placeholder="Example: 50"
+        min="0"
+      >
+
+    </div>
+
+
+    <button onclick="calculateEngagement()">
+      Calculate Engagement Rate
+    </button>
+
+
+    <div class="result" id="result">
+
+      <div class="result-title">
+        Your Instagram Engagement Rate
+      </div>
+
+      <div class="rate" id="rate">
+        0%
+      </div>
+
+      <div class="message" id="message">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="info">
+
+    <h2>
+      How is Instagram Engagement Rate calculated?
+    </h2>
+
+    <p>
+      The engagement rate is calculated using your likes and comments
+      compared with your number of followers.
+    </p>
+
+    <p>
+      Formula:
+      <strong>
+        (Likes + Comments) ÷ Followers × 100
+      </strong>
+    </p>
+
+  </div>
+
+
+</main>
+
+
+<footer>
+
+  © 2026 SpeedTools. All rights reserved.
+
+</footer>
+
+
+<script>
+
+function calculateEngagement(){
+
+  const followers =
+    Number(document.getElementById("followers").value);
+
+  const likes =
+    Number(document.getElementById("likes").value);
+
+  const comments =
+    Number(document.getElementById("comments").value);
+
+
+  if(
+    followers <= 0 ||
+    likes < 0 ||
+    comments < 0
+  ){
+
+    alert("Please enter valid numbers.");
+
+    return;
+
+  }
+
+
+  const engagement =
+    ((likes + comments) / followers) * 100;
+
+
+  document.getElementById("rate").textContent =
+    engagement.toFixed(2) + "%";
+
+
+  let message = "";
+
+
+  if(engagement < 1){
+
+    message = "Low engagement rate.";
+
+  }
+  else if(engagement < 3){
+
+    message = "Average engagement rate.";
+
+  }
+  else if(engagement < 6){
+
+    message = "Good engagement rate.";
+
+  }
+  else{
+
+    message = "Excellent engagement rate!";
+
+  }
+
+
+  document.getElementById("message").textContent =
+    message;
+
+
+  document.getElementById("result").style.display =
+    "block";
+
+}
+
+</script>
+
+</body>
+    </html>
