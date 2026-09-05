@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Instagram Hashtag Generator - SpeedTools</title>
+
+<meta name="description"
+content="Free Instagram Hashtag Generator. Generate relevant hashtags for your Instagram posts quickly.">
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+  line-height:1.55;
+}
+
+header{
+  background:#fff;
+  border-bottom:1px solid #e6eaf0;
+}
+
+.nav{
+  max-width:1000px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  text-decoration:none;
+  color:#111827;
+  font-size:23px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#6366f1;
+}
+
+.back{
+  text-decoration:none;
+  color:#667085;
+  font-weight:800;
+  font-size:14px;
+}
+
+.hero{
+  text-align:center;
+  padding:55px 20px 45px;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+
+.badge{
+  display:inline-block;
+  background:#e0e7ff;
+  color:#4f46e5;
+  padding:7px 13px;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.hero h1{
+  font-size:clamp(32px,6vw,52px);
+  line-height:1.1;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:#6366f1;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:#667085;
+  font-size:16px;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:40px 20px 70px;
+}
+
+.generator{
+  background:#fff;
+  border:1px solid #e4e8ef;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 8px 25px rgba(20,30,50,.06);
+}
+
+.field{
+  margin-bottom:18px;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:13px;
+  border:1px solid #d9dee8;
+  border-radius:10px;
+  font:inherit;
+  outline:none;
+  background:#fff;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:#6366f1;
+}
+
+button{
+  width:100%;
+  border:none;
+  background:#6366f1;
+  color:#fff;
+  padding:13px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#4f46e5;
+}
+
+.result{
+  display:none;
+  margin-top:22px;
+  padding:20px;
+  background:#f8f9ff;
+  border:1px solid #e0e7ff;
+  border-radius:15px;
+}
+
+.result-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.result-title{
+  font-size:14px;
+  font-weight:900;
+}
+
+.copy-btn{
+  width:auto;
+  padding:8px 13px;
+  font-size:12px;
+}
+
+.hashtags{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:15px;
+  color:#4f46e5;
+  font-size:14px;
+  line-height:1.9;
+  word-break:break-word;
+}
+
+.info{
+  margin-top:25px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:20px;
+}
+
+.info h2{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.info p{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+footer{
+  border-top:1px solid #e6eaf0;
+  padding:30px 20px;
+  text-align:center;
+  color:#8a94a6;
+  font-size:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="nav">
+
+    <a class="logo" href="index.html">
+      ⚡ Speed<span>Tools</span>
+    </a>
+
+    <a class="back" href="tools.html">
+      ← All Tools
+    </a>
+
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="badge">
+    #️⃣ INSTAGRAM TOOL
+  </div>
+
+  <h1>
+    Instagram <span>Hashtag Generator</span>
+  </h1>
+
+  <p>
+    Generate relevant Instagram hashtags for your content quickly and easily.
+  </p>
+
+</section>
+
+
+<main class="container">
+
+  <div class="generator">
+
+    <div class="field">
+
+      <label for="topic">
+        Topic or Keyword
+      </label>
+
+      <input
+        type="text"
+        id="topic"
+        placeholder="Example: fitness"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="type">
+        Content Type
+      </label>
+
+      <select id="type">
+
+        <option value="general">
+          General
+        </option>
+
+        <option value="fitness">
+          Fitness
+        </option>
+
+        <option value="fashion">
+          Fashion
+        </option>
+
+        <option value="food">
+          Food
+        </option>
+
+        <option value="travel">
+          Travel
+        </option>
+
+        <option value="business">
+          Business
+        </option>
+
+        <option value="beauty">
+          Beauty
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <button onclick="generateHashtags()">
+      Generate Hashtags
+    </button>
+
+
+    <div class="result" id="result">
+
+      <div class="result-top">
+
+        <div class="result-title">
+          Generated Hashtags
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyHashtags()">
+          Copy
+        </button>
+
+      </div>
+
+      <div
+        class="hashtags"
+        id="hashtags">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="info">
+
+    <h2>
+      How to use the Instagram Hashtag Generator
+    </h2>
+
+    <p>
+      Enter a topic or keyword related to your post and choose
+      the content category.
+    </p>
+
+    <p>
+      SpeedTools will generate a group of hashtag ideas that you
+      can copy and use in your Instagram content.
+    </p>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  © 2026 SpeedTools. All rights reserved.
+
+</footer>
+
+
+<script>
+
+const hashtagSets = {
+
+  general: [
+    "instagram",
+    "instagood",
+    "photooftheday",
+    "instadaily",
+    "explore",
+    "explorepage",
+    "contentcreator",
+    "socialmedia",
+    "viral",
+    "trending"
+  ],
+
+  fitness: [
+    "fitness",
+    "fitnessmotivation",
+    "workout",
+    "gym",
+    "gymmotivation",
+    "fitlife",
+    "health",
+    "training",
+    "bodybuilding",
+    "fitfam"
+  ],
+
+  fashion: [
+    "fashion",
+    "fashionstyle",
+    "style",
+    "fashionblogger",
+    "ootd",
+    "outfit",
+    "streetstyle",
+    "fashioninspo",
+    "clothing",
+    "trend"
+  ],
+
+  food: [
+    "food",
+    "foodie",
+    "foodphotography",
+    "instafood",
+    "foodlover",
+    "recipe",
+    "cooking",
+    "delicious",
+    "homemade",
+    "foodblogger"
+  ],
+
+  travel: [
+    "travel",
+    "travelgram",
+    "travelphotography",
+    "wanderlust",
+    "vacation",
+    "adventure",
+    "explore",
+    "travelblogger",
+    "trip",
+    "beautifuldestinations"
+  ],
+
+  business: [
+    "business",
+    "entrepreneur",
+    "entrepreneurship",
+    "businessowner",
+    "marketing",
+    "digitalmarketing",
+    "smallbusiness",
+    "success",
+    "startup",
+    "money"
+  ],
+
+  beauty: [
+    "beauty",
+    "beautytips",
+    "makeup",
+    "makeuptutorial",
+    "skincare",
+    "beautyblogger",
+    "cosmetics",
+    "glowingskin",
+    "selfcare",
+    "beautycommunity"
+  ]
+
+};
+
+
+function cleanTopic(topic){
+
+  return topic
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-zA-Z0-9]+/g,"")
+    .substring(0,30);
+
+}
+
+
+function generateHashtags(){
+
+  const topicInput =
+    document.getElementById("topic").value;
+
+  const type =
+    document.getElementById("type").value;
+
+
+  const topic =
+    cleanTopic(topicInput);
+
+
+  if(!topic){
+
+    alert("Please enter a topic or keyword.");
+
+    return;
+
+  }
+
+
+  const baseHashtags =
+    hashtagSets[type] || hashtagSets.general;
+
+
+  const topicHashtags = [
+
+    topic,
+    topic + "instagram",
+    topic + "daily",
+    topic + "tips",
+    topic + "community",
+    topic + "content",
+    topic + "inspo",
+    topic + "blogger",
+    topic + "creator",
+    topic + "life"
+
+  ];
+
+
+  const allHashtags = [
+
+    ...topicHashtags,
+    ...baseHashtags
+
+  ];
+
+
+  const uniqueHashtags =
+    [...new Set(allHashtags)];
+
+
+  const finalHashtags =
+    uniqueHashtags
+      .slice(0,20)
+      .map(tag => "#" + tag)
+      .join(" ");
+
+
+  document.getElementById("hashtags").textContent =
+    finalHashtags;
+
+
+  document.getElementById("result").style.display =
+    "block";
+
+}
+
+
+function copyHashtags(){
+
+  const text =
+    document.getElementById("hashtags").textContent;
+
+
+  navigator.clipboard.writeText(text)
+    .then(function(){
+
+      alert("Hashtags copied!");
+
+    })
+    .catch(function(){
+
+      alert("Copy failed. Please copy the hashtags manually.");
+
+    });
+
+}
+
+</script>
+
+</body>
+  </html>
