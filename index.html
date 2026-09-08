@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SpeedTools – Free Online Tools for Creators & Business</title>
+
+<meta name="description" content="SpeedTools provides fast, free online tools for creators, marketers, businesses and everyday tasks.">
+
+<meta name="keywords" content="free online tools, creator tools, TikTok tools, business tools, image tools, calculators">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f8fc;
+    color:#172033;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #e8eaf0;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    min-height:70px;
+    padding:0 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#6c5ce7;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    font-size:15px;
+    font-weight:600;
+    color:#596174;
+}
+
+.nav-links a:hover{
+    color:#6c5ce7;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    background:
+    radial-gradient(circle at 10% 20%,rgba(108,92,231,.15),transparent 30%),
+    radial-gradient(circle at 90% 10%,rgba(0,184,148,.12),transparent 25%),
+    linear-gradient(135deg,#ffffff,#f4f5ff);
+
+    padding:90px 20px 80px;
+    text-align:center;
+}
+
+.hero-content{
+    max-width:850px;
+    margin:auto;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:#eeebff;
+    color:#6352d9;
+    padding:7px 14px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.08;
+    letter-spacing:-2px;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:#6c5ce7;
+}
+
+.hero p{
+    max-width:680px;
+    margin:0 auto 32px;
+    color:#667085;
+    font-size:18px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 22px;
+    border-radius:12px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:#6c5ce7;
+    color:white;
+    box-shadow:0 8px 25px rgba(108,92,231,.22);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.btn-secondary{
+    background:white;
+    border:1px solid #dddfea;
+}
+
+.btn-secondary:hover{
+    border-color:#6c5ce7;
+    color:#6c5ce7;
+}
+
+/* ================= SEARCH ================= */
+
+.search-area{
+    max-width:850px;
+    margin:-30px auto 0;
+    padding:0 20px;
+    position:relative;
+    z-index:5;
+}
+
+.search-box{
+    background:white;
+    border:1px solid #e4e6ee;
+    border-radius:18px;
+    padding:8px;
+    display:flex;
+    align-items:center;
+    box-shadow:0 15px 45px rgba(25,35,60,.10);
+}
+
+.search-icon{
+    font-size:21px;
+    padding:0 12px;
+}
+
+#search{
+    width:100%;
+    border:0;
+    outline:none;
+    font-size:16px;
+    padding:14px 5px;
+    color:#172033;
+}
+
+/* ================= MAIN ================= */
+
+section{
+    padding:80px 20px;
+}
+
+.section-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-header{
+    margin-bottom:35px;
+}
+
+.section-header h2{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.section-header p{
+    color:#71798b;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.category{
+    border:1px solid #e0e3eb;
+    background:white;
+    border-radius:50px;
+    padding:9px 17px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    color:#5f6778;
+    transition:.2s;
+}
+
+.category:hover,
+.category.active{
+    background:#6c5ce7;
+    border-color:#6c5ce7;
+    color:white;
+}
+
+/* ================= TOOLS GRID ================= */
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.tool-card{
+    background:white;
+    border:1px solid #e5e7ee;
+    border-radius:18px;
+    padding:22px;
+    transition:.25s;
+    display:flex;
+    flex-direction:column;
+    min-height:220px;
+}
+
+.tool-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(30,40,70,.09);
+    border-color:#d7d1ff;
+}
+
+.tool-icon{
+    width:50px;
+    height:50px;
+    border-radius:14px;
+    background:#f0eeff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    margin-bottom:17px;
+}
+
+.tool-card h3{
+    font-size:18px;
+    margin-bottom:7px;
+}
+
+.tool-card p{
+    color:#747c8e;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.tool-link{
+    margin-top:auto;
+    color:#6c5ce7;
+    font-weight:700;
+    font-size:14px;
+}
+
+.tool-link:hover{
+    text-decoration:underline;
+}
+
+.no-results{
+    display:none;
+    text-align:center;
+    padding:40px;
+    color:#737b8c;
+}
+
+/* ================= FEATURED ================= */
+
+.featured{
+    background:#ffffff;
+}
+
+.featured-box{
+    background:linear-gradient(135deg,#171b2e,#292e49);
+    color:white;
+    border-radius:25px;
+    padding:45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.featured-box h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.featured-box p{
+    color:#c5c9d7;
+    max-width:600px;
+}
+
+.featured-btn{
+    background:white;
+    color:#22263a;
+    padding:13px 20px;
+    border-radius:12px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+/* ================= GAMING ================= */
+
+.gaming-section{
+    background:#f0f1f7;
+}
+
+.gaming-box{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.gaming-card{
+    background:white;
+    border-radius:20px;
+    padding:28px;
+    border:1px solid #e3e5ec;
+    transition:.2s;
+}
+
+.gaming-card:hover{
+    transform:translateY(-4px);
+}
+
+.gaming-icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.gaming-card h3{
+    margin-bottom:8px;
+}
+
+.gaming-card p{
+    color:#727a8c;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    background:white;
+}
+
+.about-content{
+    max-width:800px;
+}
+
+.about-content h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.about-content p{
+    color:#687184;
+    margin-bottom:15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#151827;
+    color:white;
+    padding:55px 20px 25px;
+}
+
+.footer-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.footer-top{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:40px;
+}
+
+.footer-brand p{
+    color:#aeb3c2;
+    max-width:400px;
+    margin-top:12px;
+    font-size:14px;
+}
+
+.footer-column h4{
+    margin-bottom:15px;
+}
+
+.footer-column a{
+    display:block;
+    color:#aeb3c2;
+    margin-bottom:9px;
+    font-size:14px;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid #2c3041;
+    padding-top:20px;
+    text-align:center;
+    color:#9298aa;
+    font-size:13px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px){
+
+    .tools-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .nav{
+        min-height:62px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding:70px 18px;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    section{
+        padding:60px 18px;
+    }
+
+    .tools-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .gaming-box{
+        grid-template-columns:1fr;
+    }
+
+    .featured-box{
+        padding:30px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-top{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .tools-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:39px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+}
+
+/* ================= HIDDEN ================= */
+
+.hidden{
+    display:none!important;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="nav">
+
+<a href="index.html" class="logo">
+⚡ Speed<span>Tools</span>
+</a>
+
+<nav class="nav-links">
+<a href="#tools">Tools</a>
+<a href="#gaming">Gaming</a>
+<a href="#about">About</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-badge">
+⚡ Fast • Free • Useful
+</div>
+
+<h1>
+Powerful tools.<br>
+<span>Less work.</span>
+</h1>
+
+<p>
+Free online tools for creators, marketers, businesses and everyday tasks.
+Simple, fast and designed to save you time.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#tools" class="btn btn-primary">
+Explore Tools
+</a>
+
+<a href="#gaming" class="btn btn-secondary">
+🎮 Explore Gaming
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-area">
+
+<div class="search-box">
+
+<div class="search-icon">🔎</div>
+
+<input
+type="text"
+id="search"
+placeholder="Search for a tool..."
+autocomplete="off"
+>
+
+</div>
+
+</div>
+
+
+<!-- ================= TOOLS ================= -->
+
+<section id="tools">
+
+<div class="section-container">
+
+<div class="section-header">
+
+<h2>Popular Tools</h2>
+
+<p>
+Start with our most useful free tools.
+</p>
+
+</div>
+
+
+<div class="categories">
+
+<button class="category active" data-category="all">
+All
+</button>
+
+<button class="category" data-category="social">
+Social Media
+</button>
+
+<button class="category" data-category="image">
+Images
+</button>
+
+<button class="category" data-category="business">
+Business
+</button>
+
+<button class="category" data-category="calculator">
+Calculators
+</button>
+
+</div>
+
+
+<div class="tools-grid" id="toolsGrid">
+
+
+<!-- SOCIAL -->
+
+<a
+class="tool-card"
+data-category="social"
+data-name="TikTok Engagement Calculator"
+href="tiktok-engagement.html"
+>
+
+<div class="tool-icon">📊</div>
+
+<h3>TikTok Engagement Calculator</h3>
+
+<p>
+Calculate your TikTok engagement rate quickly.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="social"
+data-name="TikTok Hashtag Generator"
+href="tiktok-hashtag-generator.html"
+>
+
+<div class="tool-icon">#️⃣</div>
+
+<h3>TikTok Hashtag Generator</h3>
+
+<p>
+Generate relevant TikTok hashtags for your content.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="social"
+data-name="TikTok Caption Generator"
+href="tiktok-caption-generator.html"
+>
+
+<div class="tool-icon">✍️</div>
+
+<h3>TikTok Caption Generator</h3>
+
+<p>
+Create engaging captions for TikTok videos.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<!-- IMAGE -->
+
+<a
+class="tool-card"
+data-category="image"
+data-name="JPG PNG Converter"
+href="jpg-png.html"
+>
+
+<div class="tool-icon">🖼️</div>
+
+<h3>JPG → PNG Converter</h3>
+
+<p>
+Convert JPG images to PNG format quickly.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="image"
+data-name="PNG JPG Converter"
+href="png-jpg.html"
+>
+
+<div class="tool-icon">🔄</div>
+
+<h3>PNG → JPG Converter</h3>
+
+<p>
+Convert PNG images into JPG format.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="image"
+data-name="Image Compressor"
+href="image-compressor.html"
+>
+
+<div class="tool-icon">📦</div>
+
+<h3>Image Compressor</h3>
+
+<p>
+Reduce image file size while keeping good quality.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="image"
+data-name="Image Resizer"
+href="image-resizer.html"
+>
+
+<div class="tool-icon">📐</div>
+
+<h3>Image Resizer</h3>
+
+<p>
+Resize images to any dimensions.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<!-- BUSINESS -->
+
+<a
+class="tool-card"
+data-category="business"
+data-name="Profit Calculator"
+href="profit-calculator.html"
+>
+
+<div class="tool-icon">💰</div>
+
+<h3>Profit Calculator</h3>
+
+<p>
+Calculate revenue, costs and profit.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="business"
+data-name="ROI Calculator"
+href="roi-calculator.html"
+>
+
+<div class="tool-icon">📈</div>
+
+<h3>ROI Calculator</h3>
+
+<p>
+Calculate your return on investment.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="business"
+data-name="Ad ROAS Calculator"
+href="roas-calculator.html"
+>
+
+<div class="tool-icon">📣</div>
+
+<h3>Ad ROAS Calculator</h3>
+
+<p>
+Calculate advertising return on ad spend.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<!-- CALCULATORS -->
+
+<a
+class="tool-card"
+data-category="calculator"
+data-name="Discount Calculator"
+href="discount-calculator.html"
+>
+
+<div class="tool-icon">🏷️</div>
+
+<h3>Discount Calculator</h3>
+
+<p>
+Calculate discounts and final prices instantly.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="calculator"
+data-name="Percentage Calculator"
+href="percentage-calculator.html"
+>
+
+<div class="tool-icon">%</div>
+
+<h3>Percentage Calculator</h3>
+
+<p>
+Solve common percentage calculations quickly.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+data-category="calculator"
+data-name="Conversion Calculator"
+href="conversion-calculator.html"
+>
+
+<div class="tool-icon">🔢</div>
+
+<h3>Conversion Calculator</h3>
+
+<p>
+Convert common units quickly and easily.
+</p>
+
+<span class="tool-link">
+Use Tool →
+</span>
+
+</a>
+
+
+</div>
+
+
+<div class="no-results" id="noResults">
+
+No tools found. Try another search.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FEATURED ================= -->
+
+<section class="featured">
+
+<div class="section-container">
+
+<div class="featured-box">
+
+<div>
+
+<h2>More powerful tools are coming.</h2>
+
+<p>
+We're continuously adding useful tools for creators,
+business owners, marketers and everyday users.
+</p>
+
+</div>
+
+<a href="#tools" class="featured-btn">
+Browse Tools
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= GAMING ================= -->
+
+<section id="gaming" class="gaming-section">
+
+<div class="section-container">
+
+<div class="section-header">
+
+<h2>🎮 Gaming & Rewards</h2>
+
+<p>
+Discover games, rewards and upcoming offers.
+</p>
+
+</div>
+
+
+<div class="gaming-box">
+
+
+<a href="gaming.html#games" class="gaming-card">
+
+<div class="gaming-icon">
+🎮
+</div>
+
+<h3>Free Games</h3>
+
+<p>
+Discover popular free-to-play games and gaming resources.
+</p>
+
+<span class="tool-link">
+Explore Games →
+</span>
+
+</a>
+
+
+<a href="gaming.html#apps" class="gaming-card">
+
+<div class="gaming-icon">
+🎁
+</div>
+
+<h3>App Rewards</h3>
+
+<p>
+Find apps and reward opportunities coming to SpeedTools.
+</p>
+
+<span class="tool-link">
+Explore Rewards →
+</span>
+
+</a>
+
+
+<a href="gaming.html#offers" class="gaming-card">
+
+<div class="gaming-icon">
+🔥
+</div>
+
+<h3>Game Offers</h3>
+
+<p>
+Discover special gaming offers and promotions.
+</p>
+
+<span class="tool-link">
+View Offers →
+</span>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="about">
+
+<div class="section-container">
+
+<div class="about-content">
+
+<h2>About SpeedTools</h2>
+
+<p>
+SpeedTools is a growing collection of fast and easy-to-use
+online tools designed to help creators, marketers,
+business owners and everyday users.
+</p>
+
+<p>
+Our goal is simple: give you useful tools without unnecessary
+complexity, registration or wasted time.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-container">
+
+<div class="footer-top">
+
+
+<div class="footer-brand">
+
+<div class="logo">
+⚡ Speed<span>Tools</span>
+</div>
+
+<p>
+Fast, free and useful online tools for creators,
+businesses and everyday tasks.
+</p>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>Explore</h4>
+
+<a href="#tools">
+Tools
+</a>
+
+<a href="#gaming">
+Gaming
+</a>
+
+<a href="#about">
+About
+</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>Legal</h4>
+
+<a href="#">
+Privacy Policy
+</a>
+
+<a href="#">
+Terms of Use
+</a>
+
+<a href="#">
+Contact
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 SpeedTools. All rights reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const search = document.getElementById("search");
+const cards = [...document.querySelectorAll(".tool-card")];
+const categories = [...document.querySelectorAll(".category")];
+const noResults = document.getElementById("noResults");
+
+let activeCategory = "all";
+
+
+function filterTools(){
+
+    const query = search.value
+        .toLowerCase()
+        .trim();
+
+    let visible = 0;
+
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        const category =
+            card.dataset.category;
+
+
+        const matchesSearch =
+            name.includes(query);
+
+        const matchesCategory =
+            activeCategory === "all" ||
+            category === activeCategory;
+
+
+        if(matchesSearch && matchesCategory){
+
+            card.classList.remove("hidden");
+
+            visible++;
+
+        }else{
+
+            card.classList.add("hidden");
+
+        }
+
+    });
+
+
+    noResults.style.display =
+        visible === 0 ? "block" : "none";
+
+}
+
+
+search.addEventListener("input", filterTools);
+
+
+categories.forEach(category => {
+
+    category.addEventListener("click", () => {
+
+        categories.forEach(item =>
+            item.classList.remove("active")
+        );
+
+        category.classList.add("active");
+
+        activeCategory =
+            category.dataset.category;
+
+        filterTools();
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
